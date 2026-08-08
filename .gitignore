@@ -1,0 +1,36 @@
+# --- 公開範囲の線引き ------------------------------------------------------
+# このリポジトリは PUBLIC で、置くのは「現行サイトのクローン」だけ。
+# アシガル社支援のプロジェクトルートには支援先の内部情報と認証情報が同居しているため、
+# クローンに関係しないものはすべてここで除外する。除外を外すときは
+# リポジトリの公開設定を必ず先に確認すること。
+
+# 認証情報（絶対に追跡しない）
+line/.secrets/
+.env
+.env.*
+*.pem
+*.key
+
+# 支援先の内部情報・運用データ
+line/
+clients/
+marketing/
+docs/company/
+docs/proposal/
+CLAUDE.md
+.mcp.json
+.claude/
+
+# --- 生成物・依存 ----------------------------------------------------------
+node_modules/
+dist/
+test-results/
+playwright-report/
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+*.log
+
+# 提案書ビルド（docs/proposal/ を扱うため、このリポジトリでは対象外）
+tools/build-proposal.mjs

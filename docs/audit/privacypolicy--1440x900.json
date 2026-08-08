@@ -1,0 +1,770 @@
+{
+  "url": "https://ashigaru-consulting.co.jp/privacypolicy",
+  "title": "保険代理店のM&A・事業承継支援なら｜アシガルコンサルティング株式会社",
+  "lang": "ja",
+  "docHeight": 3315,
+  "scrollWidth": 1440,
+  "clientWidth": 1440,
+  "horizontalOverflow": false,
+  "overflowing": [],
+  "rootFontSize": "16px",
+  "bodyStyle": {
+    "display": "block",
+    "position": "static",
+    "fontFamily": "\"Times New Roman\"",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "lineHeight": "normal",
+    "letterSpacing": "normal",
+    "textAlign": "start",
+    "textTransform": "none",
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgb(255, 255, 255)",
+    "backgroundImage": "none",
+    "padding": "0px 0px 0px 0px",
+    "margin": "0px 0px 0px 0px",
+    "border": "",
+    "borderRadius": "0px",
+    "opacity": "1",
+    "zIndex": "auto",
+    "gridTemplateColumns": "none",
+    "gridArea": "auto",
+    "gap": "normal",
+    "transition": "background 0.5s cubic-bezier(0.4, 0.4, 0, 1)",
+    "transform": "none",
+    "maxWidth": "none",
+    "width": "1440px",
+    "height": "3315.23px"
+  },
+  "key": {
+    "header": {
+      "selector": "header.fixed.sd",
+      "box": {
+        "x": 0,
+        "y": -0.1,
+        "w": 1440,
+        "h": 116
+      },
+      "style": {
+        "display": "flex",
+        "position": "fixed",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "24px 24px 24px 24px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "0.998508",
+        "zIndex": "2",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.8s, --g-angle 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.8s, --g-color-0 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.8s, --g-position-0 0.8",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "116px"
+      }
+    },
+    "main": {
+      "selector": "main.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 2795.9
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "2795.89px"
+      }
+    },
+    "footer": {
+      "selector": "footer.sd",
+      "box": {
+        "x": 0,
+        "y": 2795.9,
+        "w": 1440,
+        "h": 519.3
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(0, 7, 14)",
+        "backgroundImage": "none",
+        "padding": "96px 0px 96px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "1.2s cubic-bezier(0.4, 0.4, 0, 1) 0.4s, --g-angle 1.2s cubic-bezier(0.4, 0.4, 0, 1) 0.4s, --g-color-0 1.2s cubic-bezier(0.4, 0.4, 0, 1) 0.4s, --g-position-0 1.2",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "519.344px"
+      }
+    },
+    "h1": {
+      "selector": "h1.text.sd",
+      "box": {
+        "x": 353.6,
+        "y": 208,
+        "w": 732.8,
+        "h": 44.8
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "Lato",
+        "fontSize": "28px",
+        "fontWeight": "700",
+        "lineHeight": "44.8px",
+        "letterSpacing": "1.4px",
+        "textAlign": "center",
+        "textTransform": "none",
+        "color": "rgb(17, 17, 17)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "24px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.2s, --g-angle 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.2s, --g-color-0 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.2s, --g-position-0 0.8",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "732.797px",
+        "height": "44.7969px"
+      }
+    },
+    "h2": {
+      "selector": "h2#index_o9G9p9i7",
+      "box": {
+        "x": 353.6,
+        "y": 424,
+        "w": 732.8,
+        "h": 45
+      },
+      "style": {
+        "display": "block",
+        "position": "static",
+        "fontFamily": "Lato",
+        "fontSize": "20px",
+        "fontWeight": "400",
+        "lineHeight": "32px",
+        "letterSpacing": "1px",
+        "textAlign": "left",
+        "textTransform": "none",
+        "color": "rgb(17, 17, 17)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 12px 0px",
+        "margin": "48px 0px 24px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "auto",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "none",
+        "width": "732.797px",
+        "height": "45px"
+      }
+    },
+    "p": {
+      "selector": "p.text.sd.appear",
+      "box": {
+        "x": 708.1,
+        "y": 48.1,
+        "w": 43.7,
+        "h": 19.6
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "Montserrat, \"Noto Sans JP\"",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "lineHeight": "19.6px",
+        "letterSpacing": "0.7px",
+        "textAlign": "center",
+        "textTransform": "none",
+        "color": "rgb(17, 17, 17)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.4s ease-out, --g-angle 0.4s ease-out, --g-color-0 0.4s ease-out, --g-position-0 0.4s ease-out, --g-color-1 0.4s ease-out, --g-position-1 0.4s ease-out, --g-co",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "43.6875px",
+        "height": "19.5938px"
+      }
+    },
+    "a": {
+      "selector": "a.link.sd.appear",
+      "box": {
+        "x": 100,
+        "y": 39.5,
+        "w": 173,
+        "h": 36.9
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "24px",
+        "transition": "0.6s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.6s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.6s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.6s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "173px",
+        "height": "36.9062px"
+      }
+    },
+    "button": {
+      "selector": "button.icon.material-icons.link",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "style": {
+        "display": "inline-flex",
+        "position": "relative",
+        "fontFamily": "\"Material Icons\"",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "letterSpacing": "normal",
+        "textAlign": "center",
+        "textTransform": "none",
+        "color": "rgb(34, 34, 34)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "auto",
+        "height": "auto"
+      }
+    },
+    "ul": {
+      "selector": "ul",
+      "box": {
+        "x": 373.6,
+        "y": 1410,
+        "w": 712.8,
+        "h": 122.4
+      },
+      "style": {
+        "display": "block",
+        "position": "static",
+        "fontFamily": "Lato",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "25.6px",
+        "letterSpacing": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "color": "rgb(17, 17, 17)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 20px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "auto",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "none",
+        "width": "712.797px",
+        "height": "122.375px"
+      }
+    },
+    "li": {
+      "selector": "li",
+      "box": {
+        "x": 373.6,
+        "y": 605.4,
+        "w": 712.8,
+        "h": 76.8
+      },
+      "style": {
+        "display": "list-item",
+        "position": "static",
+        "fontFamily": "Lato",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "25.6px",
+        "letterSpacing": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "color": "rgb(17, 17, 17)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "10px 0px 10px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "auto",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "none",
+        "width": "712.797px",
+        "height": "76.7812px"
+      }
+    },
+    "img": {
+      "selector": "img.sd",
+      "box": {
+        "x": 100,
+        "y": 39.5,
+        "w": 173,
+        "h": 36.9
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "173px",
+        "height": "36.9062px"
+      }
+    }
+  },
+  "sections": [
+    {
+      "i": 0,
+      "selector": "section.section.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 2795.9
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(248, 247, 246)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "2795.89px"
+      },
+      "text": "個人情報保護方針アシガルコンサルティング株式会社（以下「当社」といいます。）は、利用者に関する情報を以下の通り、取り扱います。1.個人情報の収集当社は、保険代理店のM&A・事業承継支援サービスを中心に、経営・事業に関するコンサルティングを行"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://storage.googleapis.com/studio-design-asset-files/projects/JpOL36leWQ/s-4057x868_v-frms_webp_284b628c-7124-4984-b1e4-6258672711eb_small.webp",
+      "alt": "",
+      "loading": "auto",
+      "sizes": "",
+      "natural": "600x128",
+      "rendered": "173x37",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "visible": true,
+      "box": {
+        "x": 100,
+        "y": 39.5,
+        "w": 173,
+        "h": 36.9
+      },
+      "selector": "img.sd"
+    },
+    {
+      "src": "https://storage.googleapis.com/studio-design-asset-files/projects/JpOL36leWQ/s-4057x868_v-frms_webp_a58c1cb5-42cb-48af-b307-b39ba85a6793_small.webp",
+      "alt": "",
+      "loading": "auto",
+      "sizes": "",
+      "natural": "600x128",
+      "rendered": "192x41",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "visible": true,
+      "box": {
+        "x": 128,
+        "y": 3102.3,
+        "w": 192,
+        "h": 41
+      },
+      "selector": "img.sd"
+    }
+  ],
+  "bgImages": [],
+  "interactions": {
+    "fixedOrSticky": [
+      {
+        "selector": "header.fixed.sd",
+        "position": "fixed",
+        "box": {
+          "x": 0,
+          "y": -0.1,
+          "w": 1440,
+          "h": 116
+        }
+      }
+    ],
+    "animated": [],
+    "transitioned": [
+      "body",
+      "div.render-canvas",
+      "div.modals",
+      "div.StudioCanvas",
+      "div.sd.appear",
+      "header.fixed.sd",
+      "a.link.sd.appear",
+      "img.sd",
+      "p.text.sd.appear",
+      "a.sd.appear",
+      "i.icon.material-symbols.material-symbols-outlined",
+      "button.icon.material-icons.link",
+      "main.sd.appear",
+      "section.section.sd.appear",
+      "div.section-inner.sd.appear",
+      "h1.text.sd",
+      "div.richText.sd",
+      "p",
+      "h2#index_o9G9p9i7",
+      "ol",
+      "li",
+      "h2#index_qjdCV1Zy",
+      "h2#index__pX528Iq",
+      "ul",
+      "h2#index_moZy029w"
+    ],
+    "videos": [],
+    "iframes": [],
+    "forms": [],
+    "canvases": 0,
+    "externalLinks": []
+  },
+  "tokens": {
+    "colors": [
+      {
+        "value": "rgb(17, 17, 17)",
+        "count": 78
+      },
+      {
+        "value": "rgb(0, 0, 0)",
+        "count": 53
+      },
+      {
+        "value": "rgb(51, 51, 51)",
+        "count": 43
+      },
+      {
+        "value": "rgb(255, 255, 255)",
+        "count": 13
+      },
+      {
+        "value": "rgb(0, 53, 113)",
+        "count": 6
+      },
+      {
+        "value": "rgb(17, 92, 241)",
+        "count": 2
+      },
+      {
+        "value": "rgb(34, 34, 34)",
+        "count": 1
+      }
+    ],
+    "backgrounds": [
+      {
+        "value": "rgb(255, 255, 255)",
+        "count": 6
+      },
+      {
+        "value": "rgb(248, 247, 246)",
+        "count": 1
+      },
+      {
+        "value": "rgb(0, 7, 14)",
+        "count": 1
+      },
+      {
+        "value": "rgb(17, 17, 17)",
+        "count": 1
+      }
+    ],
+    "fonts": [
+      {
+        "value": "Lato",
+        "count": 75
+      },
+      {
+        "value": "\"Times New Roman\"",
+        "count": 53
+      },
+      {
+        "value": "sans-serif",
+        "count": 43
+      },
+      {
+        "value": "Montserrat, \"Noto Sans JP\"",
+        "count": 15
+      },
+      {
+        "value": "\"Material Icons\"",
+        "count": 5
+      },
+      {
+        "value": "Montserrat",
+        "count": 4
+      },
+      {
+        "value": "\"Material Symbols Outlined\"",
+        "count": 1
+      }
+    ],
+    "fontSizes": [
+      {
+        "value": "16px",
+        "count": 113
+      },
+      {
+        "value": "20px",
+        "count": 8
+      },
+      {
+        "value": "14px",
+        "count": 7
+      },
+      {
+        "value": "13px",
+        "count": 6
+      },
+      {
+        "value": "36px",
+        "count": 2
+      },
+      {
+        "value": "48px",
+        "count": 2
+      },
+      {
+        "value": "24px",
+        "count": 1
+      },
+      {
+        "value": "28px",
+        "count": 1
+      },
+      {
+        "value": "10px",
+        "count": 1
+      },
+      {
+        "value": "12px",
+        "count": 1
+      }
+    ],
+    "customProps": {
+      "--g-position-9": "100%",
+      "--g-position-10": "100%",
+      "--g-position-8": "100%",
+      "--g-color-5": "rgba(0, 0, 0, 0)",
+      "--rebranding-loading-bar": "#222",
+      "--s-color-d39282a5": "#003571ff",
+      "--g-color-0": "rgba(0, 0, 0, 0)",
+      "--g-color-9": "rgba(0, 0, 0, 0)",
+      "--g-position-1": "100%",
+      "--g-position-4": "100%",
+      "--g-color-4": "rgba(0, 0, 0, 0)",
+      "--g-angle": "180deg",
+      "--g-color-1": "rgba(0, 0, 0, 0)",
+      "--g-color-10": "rgba(0, 0, 0, 0)",
+      "--g-color-7": "rgba(0, 0, 0, 0)",
+      "--s-color-f99dbcd0": "#003571ff",
+      "--g-color-3": "rgba(0, 0, 0, 0)",
+      "--s-color-9aba5843": "#003571ff",
+      "--g-color-8": "rgba(0, 0, 0, 0)",
+      "--g-position-3": "100%",
+      "--s-color-e186ae7d": "#003571ff",
+      "--rebranding-loading-bg": "#e5e5e5",
+      "--s-color-85b0055c": "#111111ff",
+      "--s-color-fb9056f8": "#111111ff",
+      "--g-color-2": "rgba(0, 0, 0, 0)",
+      "--g-color-11": "rgba(0, 0, 0, 0)",
+      "--g-position-6": "100%",
+      "--s-font-67adc24e": "Lato",
+      "--g-position-7": "100%",
+      "--g-position-11": "100%",
+      "--s-font-42ab0630": "'Noto Sans JP'",
+      "--g-position-5": "100%",
+      "--s-font-c29dd8c6": "Inter, 'Noto Sans JP'",
+      "--g-position-0": "0.01%",
+      "--g-position-2": "100%",
+      "--s-font-6d849a6a": "'Noto Sans JP'",
+      "--s-font-ec900238": "Montserrat",
+      "--g-color-6": "rgba(0, 0, 0, 0)"
+    }
+  },
+  "mediaQueries": [
+    "(hover: hover)",
+    "screen and (max-width: 768px)",
+    "screen and (max-width: 480px)"
+  ],
+  "blockedSheets": [
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A500",
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A700",
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A400",
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A600",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A500",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A700",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A400",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A600",
+    "https://fonts.googleapis.com/css?display=swap&family=Lato%3A700",
+    "https://fonts.googleapis.com/css?display=swap&family=Lato%3A400",
+    "https://fonts.googleapis.com/css?display=swap&family=Lato%3A900"
+  ],
+  "headings": [
+    "H1: 個人情報保護方針",
+    "H2: 1.個人情報の収集",
+    "H2: 2.個人情報の利用目的",
+    "H2: 3.個人情報の第三者提供",
+    "H2: 4.個人情報の委託",
+    "H2: 5.クッキー（Cookie）等の利用について",
+    "H2: 6.安全管理措置",
+    "H2: 7.個人情報に関する苦情・相談窓口"
+  ],
+  "viewport": "1440x900",
+  "breakpoints": [
+    480,
+    768
+  ]
+}

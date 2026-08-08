@@ -1,0 +1,9 @@
+current_url,clone_url,wordpress_url,redirect_301_needed,note
+https://ashigaru-consulting.co.jp/,/,/,no,トップ
+https://ashigaru-consulting.co.jp/about,/about,/about,no,固定ページ「私たちについて」
+https://ashigaru-consulting.co.jp/service,/service,/service,no,固定ページ「サービス紹介」
+https://ashigaru-consulting.co.jp/privacypolicy,/privacypolicy,/privacypolicy,no,"スラッグは変えない。/privacy-policy に変える場合のみ301が必要（要判断E）"
+https://ashigaru-consulting.co.jp/contact,/contact,/contact,no,フォーム。移行時に送信先の再設計が必要
+https://ashigaru-consulting.co.jp/thanks,/thanks,/thanks,no,送信完了。noindex推奨（要判断）
+https://ashigaru-consulting.co.jp/#news,/#news,/#news,no,トップ内アンカー。独立ページではない
+https://ashigaru-consulting.co.jp/<存在しないパス>,404,404,no,"現行はsoft-404（200＋トップ本文）。クローンとWPは404を返す（意図的差異・要判断A）"

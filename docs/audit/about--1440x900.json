@@ -1,0 +1,984 @@
+{
+  "url": "https://ashigaru-consulting.co.jp/about",
+  "title": "会社概要｜保険代理店のM&A・事業承継支援ならアシガルコンサルティング株式会社",
+  "lang": "ja",
+  "docHeight": 6332,
+  "scrollWidth": 1440,
+  "clientWidth": 1440,
+  "horizontalOverflow": false,
+  "overflowing": [
+    {
+      "selector": "div.sd",
+      "right": 1460
+    }
+  ],
+  "rootFontSize": "16px",
+  "bodyStyle": {
+    "display": "block",
+    "position": "static",
+    "fontFamily": "\"Times New Roman\"",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "lineHeight": "normal",
+    "letterSpacing": "normal",
+    "textAlign": "start",
+    "textTransform": "none",
+    "color": "rgb(0, 0, 0)",
+    "backgroundColor": "rgb(255, 255, 255)",
+    "backgroundImage": "none",
+    "padding": "0px 0px 0px 0px",
+    "margin": "0px 0px 0px 0px",
+    "border": "",
+    "borderRadius": "0px",
+    "opacity": "1",
+    "zIndex": "auto",
+    "gridTemplateColumns": "none",
+    "gridArea": "auto",
+    "gap": "normal",
+    "transition": "background 0.5s cubic-bezier(0.4, 0.4, 0, 1)",
+    "transform": "none",
+    "maxWidth": "none",
+    "width": "1440px",
+    "height": "6332.36px"
+  },
+  "key": {
+    "header": {
+      "selector": "header.fixed.sd",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 116
+      },
+      "style": {
+        "display": "flex",
+        "position": "fixed",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "24px 24px 24px 24px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "2",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.8s, --g-angle 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.8s, --g-color-0 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.8s, --g-position-0 0.8",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "116px"
+      }
+    },
+    "main": {
+      "selector": "main.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 5333
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "5333.02px"
+      }
+    },
+    "footer": {
+      "selector": "footer.sd",
+      "box": {
+        "x": 0,
+        "y": 5813,
+        "w": 1440,
+        "h": 519.3
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(0, 12, 27)",
+        "backgroundImage": "none",
+        "padding": "96px 0px 96px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "1.2s cubic-bezier(0.4, 0.4, 0, 1) 0.4s, --g-angle 1.2s cubic-bezier(0.4, 0.4, 0, 1) 0.4s, --g-color-0 1.2s cubic-bezier(0.4, 0.4, 0, 1) 0.4s, --g-position-0 1.2",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "519.344px"
+      }
+    },
+    "h1": {
+      "selector": "h1.text.sd",
+      "box": {
+        "x": 128,
+        "y": 168,
+        "w": 1184,
+        "h": 86.4
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "Montserrat, \"Noto Sans JP\"",
+        "fontSize": "72px",
+        "fontWeight": "500",
+        "lineHeight": "86.4px",
+        "letterSpacing": "normal",
+        "textAlign": "center",
+        "textTransform": "none",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.2s, --g-angle 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.2s, --g-color-0 0.8s cubic-bezier(0.4, 0.4, 0, 1) 0.2s, --g-position-0 0.8",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1184px",
+        "height": "86.3906px"
+      }
+    },
+    "h2": {
+      "selector": "h2.text.sd",
+      "box": {
+        "x": 128,
+        "y": 516,
+        "w": 229.7,
+        "h": 48
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "Montserrat, \"Noto Sans JP\"",
+        "fontSize": "48px",
+        "fontWeight": "600",
+        "lineHeight": "48px",
+        "letterSpacing": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "1s cubic-bezier(0.4, 0.4, 0, 1) 0.3s, --g-angle 1s cubic-bezier(0.4, 0.4, 0, 1) 0.3s, --g-color-0 1s cubic-bezier(0.4, 0.4, 0, 1) 0.3s, --g-position-0 1s cubic-",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "229.734px",
+        "height": "48px"
+      }
+    },
+    "p": {
+      "selector": "p.text.sd.appear",
+      "box": {
+        "x": 708.1,
+        "y": 48.2,
+        "w": 43.7,
+        "h": 19.6
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "Montserrat, \"Noto Sans JP\"",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "lineHeight": "19.6px",
+        "letterSpacing": "0.7px",
+        "textAlign": "center",
+        "textTransform": "none",
+        "color": "rgb(17, 17, 17)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.4s ease-out, --g-angle 0.4s ease-out, --g-color-0 0.4s ease-out, --g-position-0 0.4s ease-out, --g-color-1 0.4s ease-out, --g-position-1 0.4s ease-out, --g-co",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "43.6875px",
+        "height": "19.5938px"
+      }
+    },
+    "a": {
+      "selector": "a.link.sd.appear",
+      "box": {
+        "x": 100,
+        "y": 39.5,
+        "w": 173,
+        "h": 36.9
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "24px",
+        "transition": "0.6s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.6s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.6s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.6s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "173px",
+        "height": "36.9062px"
+      }
+    },
+    "button": {
+      "selector": "button.icon.material-icons.link",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "style": {
+        "display": "inline-flex",
+        "position": "relative",
+        "fontFamily": "\"Material Icons\"",
+        "fontSize": "24px",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "letterSpacing": "normal",
+        "textAlign": "center",
+        "textTransform": "none",
+        "color": "rgb(34, 34, 34)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "auto",
+        "height": "auto"
+      }
+    },
+    "ul": {
+      "selector": "ul.sd.appear",
+      "box": {
+        "x": 640,
+        "y": 1991.7,
+        "w": 672,
+        "h": 404.8
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "24px",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "672px",
+        "height": "404.781px"
+      }
+    },
+    "li": {
+      "selector": "li.sd.appear",
+      "box": {
+        "x": 640,
+        "y": 1991.7,
+        "w": 324,
+        "h": 190.4
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "calc(50% - 12px)",
+        "width": "324px",
+        "height": "190.391px"
+      }
+    },
+    "img": {
+      "selector": "img.sd",
+      "box": {
+        "x": 100,
+        "y": 39.5,
+        "w": 173,
+        "h": 36.9
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "173px",
+        "height": "36.9062px"
+      }
+    }
+  },
+  "sections": [
+    {
+      "i": 0,
+      "selector": "div.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 396
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none",
+        "padding": "168px 0px 96px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "1",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "395.984px"
+      },
+      "text": "ABOUT US私たちについて.sd[data-r-1_0_1_a8bb66fa-a414-409e-a7bb-68804120ce36_7af8ab82-2ecd-48b6-8c5d-a1e19fee0908]:before { back"
+    },
+    {
+      "i": 1,
+      "selector": "section.section.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 396,
+        "w": 1440,
+        "h": 1475.7
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(0, 53, 113)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "1475.69px"
+      },
+      "text": "About Us私たちについて私たちの原点(創業の想い・ストーリー)「そういうこっちが、本当に聞きたいことを、メーカーの社員は全然教えてくれへんのや」ある代理店さんからリテールの営業所に新人として配属されたときに頂いた叱咤激励の言葉。 その"
+    },
+    {
+      "i": 2,
+      "selector": "section.section.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 1871.7,
+        "w": 1440,
+        "h": 644.8
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(248, 247, 246)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "644.781px"
+      },
+      "text": "Mission（理念）Mission / Vision / Value（MVV）私たちは「現場第一」という信念のもと、代理店に寄り添い、誠実かつ真摯に業界の課題へ向き合い続けます。そして、地域社会への持続的な保険・金融サービスの供給を支える"
+    },
+    {
+      "i": 3,
+      "selector": "section.section.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 2516.5,
+        "w": 1440,
+        "h": 410.4
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(248, 247, 246)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "410.391px"
+      },
+      "text": ".sd[data-r-0_0_0_3_1_bd0e5a19-79ea-4191-be27-765909526993]:before { background-image: url(\"https://images.unsplash.com/p"
+    },
+    {
+      "i": 4,
+      "selector": "section.section.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 2926.8,
+        "w": 1440,
+        "h": 751.2
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(248, 247, 246)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "751.172px"
+      },
+      "text": ".sd[data-r-0_0_0_4_1_c131ce98-84c5-48af-9dd2-eb21442f7f86]:before { background-image: url(\"https://storage.googleapis.co"
+    },
+    {
+      "i": 5,
+      "selector": "section.section.sd.appear",
+      "box": {
+        "x": 0,
+        "y": 3678,
+        "w": 1440,
+        "h": 1655
+      },
+      "style": {
+        "display": "flex",
+        "position": "relative",
+        "fontFamily": "sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "16px",
+        "letterSpacing": "normal",
+        "textAlign": "start",
+        "textTransform": "none",
+        "color": "rgb(51, 51, 51)",
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none",
+        "padding": "0px 0px 0px 0px",
+        "margin": "0px 0px 0px 0px",
+        "border": "",
+        "borderRadius": "0px",
+        "opacity": "1",
+        "zIndex": "0",
+        "gridTemplateColumns": "none",
+        "gridArea": "auto",
+        "gap": "normal",
+        "transition": "0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-angle 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-color-0 0.3s cubic-bezier(0.4, 0.4, 0, 1), --g-position-0 0.3s cubic-bezier(",
+        "transform": "none",
+        "maxWidth": "100%",
+        "width": "1440px",
+        "height": "1655px"
+      },
+      "text": "会社概要（Company Profile）会社情報会社名アシガルコンサルティング株式会社所在地〒150-0043東京都渋谷区道玄坂 1 丁目 10 番 8 号渋谷道玄坂東急ビル 2F-C（Google Map を表示）open_in_new"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://storage.googleapis.com/studio-design-asset-files/projects/JpOL36leWQ/s-4057x868_v-frms_webp_284b628c-7124-4984-b1e4-6258672711eb_small.webp",
+      "alt": "",
+      "loading": "auto",
+      "sizes": "",
+      "natural": "600x128",
+      "rendered": "173x37",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "visible": true,
+      "box": {
+        "x": 100,
+        "y": 39.5,
+        "w": 173,
+        "h": 36.9
+      },
+      "selector": "img.sd"
+    },
+    {
+      "src": "https://storage.googleapis.com/studio-design-asset-files/projects/JpOL36leWQ/s-4057x868_v-frms_webp_a58c1cb5-42cb-48af-b307-b39ba85a6793_small.webp",
+      "alt": "",
+      "loading": "auto",
+      "sizes": "",
+      "natural": "600x128",
+      "rendered": "192x41",
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "visible": true,
+      "box": {
+        "x": 128,
+        "y": 6119.4,
+        "w": 192,
+        "h": 41
+      },
+      "selector": "img.sd"
+    }
+  ],
+  "bgImages": [],
+  "interactions": {
+    "fixedOrSticky": [
+      {
+        "selector": "header.fixed.sd",
+        "position": "fixed",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 116
+        }
+      }
+    ],
+    "animated": [],
+    "transitioned": [
+      "body",
+      "div.render-canvas",
+      "div.modals",
+      "div.StudioCanvas",
+      "div.sd.appear",
+      "header.fixed.sd",
+      "a.link.sd.appear",
+      "img.sd",
+      "p.text.sd.appear",
+      "a.sd.appear",
+      "i.icon.material-symbols.material-symbols-outlined",
+      "button.icon.material-icons.link",
+      "main.sd.appear",
+      "h1.text.sd",
+      "p.text.sd",
+      "div.image.sd",
+      "section.section.sd.appear",
+      "div.section-inner.sd.appear",
+      "div.sd",
+      "h2.text.sd",
+      "div.richText.sd",
+      "p",
+      "ul.sd.appear",
+      "li.sd.appear",
+      "li.sd.appear._boolean"
+    ],
+    "videos": [],
+    "iframes": [
+      {
+        "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3241.808657940609!2d139.6979988!3d35.6570856!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b57fd16a495%3A0xcb06d1441e80b58d!2z44CSMTUwLTAwNDEg5p2x5Lqs6YO95riL6LC35Yy656We5Y2X77yR5LiB55uu77yS77yT4oiS77yR77yQ!5e0!3m2!1sja!2sjp!4v1759817019405!5m2!1sja!2sjp",
+        "title": ""
+      }
+    ],
+    "forms": [],
+    "canvases": 0,
+    "externalLinks": [
+      "https://maps.app.goo.gl/y6z8KSGxpGaiUuur7"
+    ]
+  },
+  "tokens": {
+    "colors": [
+      {
+        "value": "rgb(51, 51, 51)",
+        "count": 143
+      },
+      {
+        "value": "rgb(17, 17, 17)",
+        "count": 67
+      },
+      {
+        "value": "rgb(0, 0, 0)",
+        "count": 54
+      },
+      {
+        "value": "rgb(255, 255, 255)",
+        "count": 31
+      },
+      {
+        "value": "rgb(34, 34, 34)",
+        "count": 6
+      },
+      {
+        "value": "rgb(0, 53, 113)",
+        "count": 6
+      }
+    ],
+    "backgrounds": [
+      {
+        "value": "rgb(255, 255, 255)",
+        "count": 8
+      },
+      {
+        "value": "rgb(17, 17, 17)",
+        "count": 7
+      },
+      {
+        "value": "rgb(248, 247, 246)",
+        "count": 5
+      },
+      {
+        "value": "rgb(0, 53, 113)",
+        "count": 1
+      },
+      {
+        "value": "rgb(0, 12, 27)",
+        "count": 1
+      }
+    ],
+    "fonts": [
+      {
+        "value": "sans-serif",
+        "count": 138
+      },
+      {
+        "value": "Lato",
+        "count": 68
+      },
+      {
+        "value": "\"Times New Roman\"",
+        "count": 54
+      },
+      {
+        "value": "Montserrat, \"Noto Sans JP\"",
+        "count": 32
+      },
+      {
+        "value": "\"Material Icons\"",
+        "count": 10
+      },
+      {
+        "value": "Montserrat",
+        "count": 4
+      },
+      {
+        "value": "\"Material Symbols Outlined\"",
+        "count": 1
+      }
+    ],
+    "fontSizes": [
+      {
+        "value": "16px",
+        "count": 145
+      },
+      {
+        "value": "20px",
+        "count": 30
+      },
+      {
+        "value": "18px",
+        "count": 12
+      },
+      {
+        "value": "48px",
+        "count": 9
+      },
+      {
+        "value": "14px",
+        "count": 7
+      },
+      {
+        "value": "24px",
+        "count": 7
+      },
+      {
+        "value": "13px",
+        "count": 6
+      },
+      {
+        "value": "36px",
+        "count": 2
+      },
+      {
+        "value": "72px",
+        "count": 1
+      },
+      {
+        "value": "28px",
+        "count": 1
+      },
+      {
+        "value": "10px",
+        "count": 1
+      },
+      {
+        "value": "12px",
+        "count": 1
+      }
+    ],
+    "customProps": {
+      "--g-position-9": "100%",
+      "--g-position-10": "100%",
+      "--g-position-8": "100%",
+      "--g-color-5": "rgba(0, 0, 0, 0)",
+      "--rebranding-loading-bar": "#222",
+      "--s-color-d39282a5": "#003571ff",
+      "--g-color-0": "rgba(0, 0, 0, 0)",
+      "--g-color-9": "rgba(0, 0, 0, 0)",
+      "--g-position-1": "100%",
+      "--g-position-4": "100%",
+      "--g-color-4": "rgba(0, 0, 0, 0)",
+      "--g-angle": "180deg",
+      "--g-color-1": "rgba(0, 0, 0, 0)",
+      "--g-color-10": "rgba(0, 0, 0, 0)",
+      "--g-color-7": "rgba(0, 0, 0, 0)",
+      "--s-color-f99dbcd0": "#003571ff",
+      "--g-color-3": "rgba(0, 0, 0, 0)",
+      "--s-color-9aba5843": "#003571ff",
+      "--g-color-8": "rgba(0, 0, 0, 0)",
+      "--g-position-3": "100%",
+      "--s-color-e186ae7d": "#003571ff",
+      "--rebranding-loading-bg": "#e5e5e5",
+      "--s-color-85b0055c": "#111111ff",
+      "--s-color-fb9056f8": "#111111ff",
+      "--g-color-2": "rgba(0, 0, 0, 0)",
+      "--g-color-11": "rgba(0, 0, 0, 0)",
+      "--g-position-6": "100%",
+      "--s-font-67adc24e": "Lato",
+      "--g-position-7": "100%",
+      "--g-position-11": "100%",
+      "--s-font-42ab0630": "'Noto Sans JP'",
+      "--g-position-5": "100%",
+      "--s-font-c29dd8c6": "Inter, 'Noto Sans JP'",
+      "--g-position-0": "0.01%",
+      "--g-position-2": "100%",
+      "--s-font-6d849a6a": "'Noto Sans JP'",
+      "--s-font-ec900238": "Montserrat",
+      "--g-color-6": "rgba(0, 0, 0, 0)"
+    }
+  },
+  "mediaQueries": [
+    "(hover: hover)",
+    "screen and (max-width: 768px)",
+    "screen and (max-width: 480px)"
+  ],
+  "blockedSheets": [
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A500",
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A700",
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A600",
+    "https://fonts.googleapis.com/css?display=swap&family=Montserrat%3A400",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A500",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A700",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A600",
+    "https://fonts.googleapis.com/css?display=swap&family=Noto+Sans+JP%3A400",
+    "https://fonts.googleapis.com/css?display=swap&family=Lato%3A700",
+    "https://fonts.googleapis.com/css?display=swap&family=Lato%3A400"
+  ],
+  "headings": [
+    "H1: ABOUT US",
+    "H2: About Us",
+    "H2: Mission（理念）",
+    "H2: Vision（ビジョン）",
+    "H2: Value（価値観・行動指針）",
+    "H2: 会社概要（Company Profile）",
+    "H2: アクセス情報",
+    "H2: アクセス情報"
+  ],
+  "viewport": "1440x900",
+  "breakpoints": [
+    480,
+    768
+  ]
+}

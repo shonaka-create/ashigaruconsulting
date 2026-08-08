@@ -1,0 +1,993 @@
+/* ashigaru-consulting.co.jp — clone stylesheet.
+   Every number here is transcribed from the live site's computed styles / getBoundingClientRect
+   at 1440, 768 and 390 (docs/current-site-audit.md). Nothing is eyeballed.
+
+   Real breakpoints, taken from the @media rules the live stylesheets actually ship:
+   768px and 480px. The desktop bar is replaced by the drawer at <=768. */
+
+:root {
+  --navy: #003571;      /* section bg, buttons, badges, CTA headings */
+  --cream: #f8f7f6;     /* alternate section bg + form field bg */
+  --ink: #111111;       /* headings, nav */
+  --body: #333333;      /* long-form body copy */
+  --red: #9a3632;       /* hero "call us" button */
+  --red-badge: #f23a3c; /* 必須 / 任意 pill */
+  --badge-ink: #f4fff5; /* text inside the navy and red pills */
+  --link: #007cff;
+  --ease: cubic-bezier(0.4, 0.4, 0, 1);
+  --img-filter: none;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--body);
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: inherit; }
+ul, ol { margin: 0; padding: 0; }
+ul { list-style: none; }
+
+.mi {
+  font-family: "Material Icons";
+  font-size: 20px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  white-space: nowrap;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+}
+.mi-sym { font-family: "Material Symbols Outlined"; }
+.mi-16 { font-size: 16px; }
+.mi-24 { font-size: 24px; }
+.mi-48 { font-size: 48px; }
+
+/* The photo element. STUDIO paints images on a ::before so the filter and the object-fit
+   are independent of the box; kept identical here so the rounded corners clip the same way. */
+.photo { position: relative; overflow: hidden; }
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: 50% 50%;
+  filter: var(--img-filter);
+}
+/* The single page-wide fixed photo (home only). z-index:-1 puts it above <main>'s white
+   background box but below every in-flow section, so opaque sections hide it and the
+   transparent hero / parallax band let it through — exactly what STUDIO does. */
+.fixed-bg { position: fixed; inset: 0; z-index: -1; }
+
+/* Scroll reveal: opacity 0 + 12/24/48px offset, 300–800ms, --ease. Applied by main.js. */
+[data-reveal] { opacity: 0; translate: 0 24px; transition: opacity 0.8s var(--ease), translate 0.8s var(--ease); }
+[data-reveal="rule"] { opacity: 1; translate: none; scale: 0 1; transform-origin: left center; transition: scale 0.8s var(--ease); }
+.is-revealed[data-reveal] { opacity: 1; translate: none; }
+.is-revealed[data-reveal="rule"] { scale: 1 1; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; translate: none; scale: none; transition: none; }
+  .fixed-bg { display: none; }
+}
+
+/* ------------------------------------------------------------------ header */
+
+.hdr {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+}
+.hdr-bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 1280px;
+  height: 68px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: #fff;
+}
+.hdr-logo { flex: none; }
+.hdr-logo img { width: 173px; height: 37px; }
+.hdr-nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 20px;
+}
+.hdr-nav a {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  color: var(--ink);
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.7px;
+}
+.hdr-actions { display: flex; align-items: center; gap: 12px; }
+.hdr-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0.7px;
+}
+.hdr-burger { display: none; }
+
+/* ------------------------------------------------------------------ drawer */
+
+.drawer { position: fixed; inset: 0; z-index: 30; }
+.drawer[hidden] { display: none; }
+.drawer-scrim { position: absolute; inset: 0; width: 100%; border: 0; background: rgba(0, 0, 0, 0.16); }
+.drawer-panel { position: absolute; inset: 0; background: #fff; display: flex; flex-direction: column; }
+.drawer-close {
+  position: absolute;
+  top: 0; right: 0;
+  width: 72px; height: 72px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  border: 0; background: none; color: var(--ink); cursor: pointer;
+}
+.drawer-close .mi { font-size: 24px; }
+.drawer-nav { margin-top: 48px; }
+.drawer-nav a {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 24px;
+  color: var(--ink);
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+}
+.drawer-foot { padding: 48px 24px; background: var(--cream); }
+.drawer-foot a {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2.1px;
+}
+
+/* ------------------------------------------------------------------ shared */
+
+.sec { display: flex; flex-direction: column; align-items: center; }
+.sec-inner {
+  width: 100%;
+  max-width: 1280px;
+  padding: 120px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sec-inner-1080 { max-width: 1080px; }
+/* Vision / Value / access run at half the vertical padding of every other section. */
+.sec-inner-60 { padding: 60px 48px; }
+.sec-navy { background: var(--navy); }
+.sec-cream { background: var(--cream); }
+.sec-white { background: #fff; }
+
+.sec-head { width: 100%; }
+.sec-en {
+  display: block;
+  min-height: 48px;
+  color: var(--ink);
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+}
+.sec-ja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 4px;
+  margin-top: 12px;
+}
+.sec-rule { display: block; width: 30px; height: 1px; background: var(--ink); }
+.sec-ja p {
+  color: var(--ink);
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.on-navy .sec-en, .on-navy .sec-ja p { color: #fff; }
+.on-navy .sec-rule { background: #fff; }
+/* The home page's About block is the one heading set in Lato at 18px; every other
+   section heading on the site is Montserrat at 20px. */
+.sec-head-lato .sec-en { font-family: Lato, sans-serif; }
+.sec-head-lato .sec-ja p { font-family: Lato, sans-serif; font-size: 18px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 62px;
+  padding: 20px 48px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.btn p { white-space: nowrap; }
+.btn-navy { background: var(--navy); color: #fff; }
+.btn-white { background: #fff; color: var(--ink); font-weight: 700; }
+.btn-red { gap: 10px; background: var(--red); color: #fff; height: 65px; padding: 20px 45px 20px 48px; font-size: 18px; }
+.btn-red .mi { font-size: 24px; }
+.btn-plain { height: 22px; padding: 0; color: var(--ink); }
+.btn-bold { font-weight: 700; }
+
+/* ----------------------------------------------------------- page-top hero */
+
+.phero {
+  position: relative;
+  width: 100%;
+  height: 396px;
+  padding: 168px 0 96px;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+.phero-bg { position: absolute; inset: 0; }
+.phero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 48px;
+  text-align: center;
+  color: #fff;
+}
+.phero-en {
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.phero-ja {
+  margin-top: 12px;
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* -------------------------------------------------------------- home: hero */
+
+.hero {
+  position: relative;
+  height: 840px;
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(102, 102, 102, 0) 53%);
+}
+.hero-inner {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 48px;
+}
+/* 122px is a hard height in the source at every breakpoint — the second line overflows
+   it slightly and the copy below is positioned from the 122, not from the text. */
+.hero-h1 { display: flex; flex-direction: column; height: 122px; color: #fff; }
+.hero-h1 span {
+  display: flex;
+  align-items: center;
+  font-size: 54px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 2.7px;
+}
+.hero-h1 span + span { font-size: 48px; line-height: 1.2; letter-spacing: 2.4px; }
+.only-mobile { display: none !important; }
+.hero-copy { margin-top: 48px; }
+.hero-lead {
+  max-width: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.hero-btns { display: flex; align-items: center; gap: 24px; margin-top: 48px; }
+.hero-scroll {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 116px;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: #fff;
+}
+.hero-scroll p {
+  writing-mode: vertical-rl;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2.1px;
+  line-height: 1.4;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 336px;
+  margin-top: 24px;
+  background-image: linear-gradient(#fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* ------------------------------------------------------------- home: about */
+
+.about-inner { flex-direction: row; align-items: center; gap: 96px; }
+.about-col { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.about-text { margin-top: 48px; }
+.about-h {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 1.6px;
+}
+.about-col .rich {
+  margin-top: 25px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+  letter-spacing: 0.8px;
+}
+.about-col .btn { margin-top: 48px; }
+.about-photo { flex: none; width: 444px; max-width: calc(50% - 48px); }
+.about-photo .photo { aspect-ratio: 445 / 381; border-radius: 8px; }
+
+/* ---------------------------------------------------------- home: services */
+
+.scards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+  width: 100%;
+  margin-top: 96px;
+}
+.scard {
+  position: relative;
+  flex: 1 1 calc(50% - 32px);
+  max-width: calc(50% - 32px);
+  height: 405px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+.scard-wide { flex-basis: 100%; max-width: 100%; }
+.scard-img { position: absolute; inset: 0; }
+.scard-body {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scard h3 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+.sec-cream > .sec-inner > .btn-navy { margin-top: 48px; }
+
+/* -------------------------------------------------------- home: parallax CTA */
+
+.sec-parallax {
+  background-image: linear-gradient(rgba(51, 51, 51, 0.5) 0%, rgb(51, 51, 51) 100%);
+}
+.pcta { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.pcta-lead {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 1.6px;
+  text-align: center;
+}
+.pcta-sub {
+  margin-top: 24px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.9px;
+  text-align: center;
+}
+.sec-parallax .btn { margin-top: 48px; }
+
+/* -------------------------------------------------------------- home: news */
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 49.7px;
+  width: 888px;
+  max-width: 100%;
+  margin-top: 88px;
+  padding-bottom: 49.7px;
+}
+.news-row { display: flex; align-items: flex-start; gap: 30px; }
+.news-meta { flex: none; display: flex; align-items: flex-start; gap: 30px; width: 282px; }
+.news-date {
+  width: 122px;
+  color: var(--body);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.news-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: var(--badge-ink);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.84px;
+}
+.news-body { display: flex; flex-direction: column; gap: 15px; }
+.news-title { color: var(--body); font-size: 24px; line-height: 1.4; }
+.news-text { color: rgba(51, 51, 51, 0.6); font-size: 18px; line-height: 1.4; }
+
+/* -------------------------------------------------------- home: photo band */
+
+.band { display: flex; }
+.band .photo { flex: 1 1 50%; max-width: 50%; height: 477px; }
+
+/* ------------------------------------------------------------ about: story */
+
+.story { display: flex; align-items: stretch; gap: 48px; width: 100%; }
+.story-col { flex: 1; display: flex; flex-direction: column; align-items: flex-start; padding-bottom: 96px; }
+.story-h {
+  margin-top: 48px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.story-col .rich {
+  display: flow-root;
+  margin-top: 48px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+.story-col .rich p { margin: 12px 0; }
+.story-img {
+  flex: none;
+  width: 568px;
+  max-width: calc(50% - 24px);
+  height: 568px;
+  border-radius: 8px;
+  align-self: flex-start;
+}
+
+/* ---------------------------------------------------------- about: mission */
+
+.mission { display: flex; align-items: stretch; gap: 96px; width: 100%; }
+.mission-txt { flex: none; width: 416px; max-width: calc(40% - 57.6px); }
+.mission-body {
+  margin-top: 48px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.mission-grid { flex: 1; display: flex; flex-wrap: wrap; gap: 24px; }
+.mission-grid li { flex: 1 1 calc(50% - 12px); max-width: calc(50% - 12px); }
+.mission-grid .photo { height: 190px; border-radius: 8px; }
+
+/* ------------------------------------------------------------ about: MVV */
+
+.mvv { display: flex; align-items: stretch; gap: 96px; width: 100%; }
+.mvv-img { flex: none; width: 480px; max-width: calc(45% - 52.8px); height: var(--img-h); border-radius: 8px; overflow: hidden; }
+.mvv-img .photo { height: 100%; }
+.mvv-txt { flex: 1; max-width: calc(50% - 48px); }
+.mvv-body {
+  margin-top: 48px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------- about: profile / access */
+
+.profile { display: flex; justify-content: center; width: 100%; }
+.profile-col { width: 800px; max-width: calc(70% - 28.8px); }
+.itable { margin-top: 48px; }
+.itable li {
+  display: flex;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.itable li:first-child { border-top: 1px solid #e5e5e5; }
+.it-label {
+  flex: none;
+  width: 180px;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.it-value { color: var(--ink); font-size: 20px; font-weight: 500; line-height: 1.6; }
+.it-value-link { display: flex; flex-direction: column; align-items: flex-end; }
+.it-ext { color: var(--body); }
+.it-ext { display: block; }
+.it-ext .mi { display: block; line-height: 29px; }
+/* The first profile row's label is 18px in the source; every other row is 20px. */
+.profile .itable li:first-child .it-label { font-size: 18px; line-height: 1.4; }
+
+.access { display: flex; align-items: flex-start; gap: 96px; width: 100%; }
+.access-map { flex: none; width: 544px; max-width: calc(50% - 48px); }
+.access-map iframe { width: 100%; height: 360px; border: 0; display: block; }
+.access-txt { flex: 1; max-width: calc(50% - 48px); }
+/* The access table splits 30/70 instead of the profile table's fixed 180px label. */
+.access .it-label { width: auto; max-width: 30%; flex: 0 0 30%; }
+/* The access heading block is a fixed 54px in the source (its Japanese line overflows);
+   the table below is spaced from that 54, not from the visual bottom. */
+.access .sec-head { height: 54px; }
+.access .it-value { max-width: 70%; }
+
+/* ------------------------------------------------------------- service rows */
+
+.srows { display: flex; flex-direction: column; gap: 64px; width: 100%; margin-top: 96px; }
+.srow {
+  display: flex;
+  align-items: stretch;
+  gap: 96px;
+  padding: 48px;
+  border-radius: 8px;
+  background: #fff;
+}
+.srow-txt { flex: 1; max-width: calc(55% - 43.2px); }
+.srow-t { color: var(--ink); font-size: 36px; font-weight: 700; line-height: 1.4; }
+.srow-txt .rich { margin-top: 24px; color: var(--ink); font-size: 18px; line-height: 1.6; }
+.srow-txt .rich { display: flow-root; }
+.srow-txt .rich p { margin: 10px 0; }
+.srow-img { flex: none; width: 437px; height: 320px; border-radius: 8px; }
+
+/* ------------------------------------------------------------------ contact */
+
+.cintro {
+  width: 780px;
+  max-width: 100%;
+  padding: 64px 48px;
+  text-align: center;
+}
+.cintro-h { color: var(--ink); font-size: 28px; font-weight: 700; line-height: 1.4; }
+.cintro-lead { margin-top: 24px; color: var(--ink); font-size: 16px; line-height: 1.6; }
+.cintro-lead p { min-height: 16px; }
+.cintro-urgent {
+  margin-top: 25px;
+  padding: 21px 0 22px;
+  border-top: 1px solid var(--red);
+  border-bottom: 1px solid var(--red);
+  color: var(--red);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.cintro-urgent p + p { margin-top: 19px; }
+.cintro-urgent a { color: var(--link); font-size: 24px; font-weight: 500; }
+
+.fcard {
+  width: 780px;
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 48px;
+  border-radius: 8px;
+  background: #fff;
+}
+.cform { width: 500px; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; }
+.fgrp { display: flex; flex-direction: column; margin-bottom: 28px; }
+.flabel { display: flex; align-items: center; gap: 5px; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.4; }
+.fr {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 128px;
+  color: var(--badge-ink);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.fr-req { background: var(--red-badge); }
+.fr-opt { background: #aaa; }
+.fgrp input, .fgrp textarea, .fsel select {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--cream);
+  color: var(--body);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.fgrp input, .fsel select { height: 50px; }
+.fgrp input { margin-top: 10px; }
+.fgrp textarea { margin-top: 10px; height: 200px; resize: vertical; }
+.fsel { position: relative; margin-top: 10px; }
+.fsel select { appearance: none; height: 54px; }
+.fsel .mi { position: absolute; top: 50%; right: 12px; translate: 0 -50%; color: #bdbdbd; pointer-events: none; }
+.fnote { margin-top: 8px; color: var(--ink); font-size: 12px; line-height: 1.4; }
+.fconsent { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 40px; color: var(--ink); font-size: 14px; line-height: 1.4; }
+.fsubmit { align-self: center; height: 57px; font-size: 15px; font-weight: 700; line-height: 1.9; }
+.cnotes { width: 740px; max-width: 100%; margin-top: 48px; color: var(--ink); font-size: 14px; line-height: 1.6; }
+.cnotes p + p { margin-top: 8px; }
+.cnotes a { color: var(--link); }
+
+/* ---------------------------------------------------- privacy policy / thanks */
+
+.doc {
+  width: 100%;
+  max-width: 829px;
+  padding: 64px 48px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.p-thanks .doc { max-width: 780px; }
+.doc-h1 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+}
+.p-thanks .doc-h1 { text-align: left; }
+.doc-h2 {
+  margin: 48px 0 24px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #e3dfdf;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+.doc-p { margin-top: 24px; }
+.doc-p a { color: #115cf1; }
+/* Rich-text lists: the source indents with margin-left, not padding, and spaces the items
+   by 10px — the same 10px that separates the list from the paragraph above it. */
+.doc-list { margin: 10px 0 0 20px; }
+.doc-list li + li { margin-top: 10px; }
+ol.doc-list { list-style: decimal; }
+ul.doc-list { list-style: disc; }
+
+/* /thanks keeps its paragraphs flush (margin 0); the blank lines are real empty <p>s. */
+.doc-rich { display: flow-root; margin-top: 24px; }
+/* 72px between the h1 and the first paragraph; the paragraph's own 24px collapses in. */
+.p-privacy .doc-h1 { margin-bottom: 72px; }
+.doc-rich p { margin: 0; min-height: 16px; }
+.doc-rich a { color: var(--link); }
+.doc strong, .rich strong { font-weight: 900; }
+.doc-back { display: flex; justify-content: center; margin-top: 48px; }
+
+/* ------------------------------------------------------------------- footer */
+
+.ftr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 96px 0;
+  background: var(--navy);
+}
+.ftr-cta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 48px;
+}
+.fcta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 580px;
+  max-width: 49%;
+  padding: 48px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 20px 0;
+  color: var(--navy);
+}
+.fcta-txt { flex: 1; }
+.fcta-t {
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1.8px;
+}
+.fcta-s-light { font-weight: 400; }
+.fcta-s {
+  margin-top: 24px;
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.8px;
+}
+.ftr-mid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  width: 100%;
+  max-width: 1280px;
+  margin-top: 32px;
+  padding: 0 48px;
+}
+.ftr-logo { width: 192px; height: 41px; }
+.ftr-nav { display: flex; align-items: center; justify-content: flex-end; gap: 32px; }
+.ftr-nav a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.65px;
+}
+.ftr-bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin-top: 48px;
+  padding: 0 48px;
+}
+.ftr-copy {
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+.ftr-privacy {
+  color: #fff;
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 2.1px;
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------- demo notice */
+
+/* position:fixed on purpose — a note in the flow would stretch the layout and every
+   measurement in docs/visual-difference-report.md with it. */
+.demo-notice {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px 8px 14px;
+  border-radius: 6px;
+  background: rgba(17, 17, 17, 0.86);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.demo-notice button {
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ================================================================ <= 768px */
+
+@media screen and (max-width: 768px) {
+  .hdr { padding: 24px; }
+  .hdr-bar { max-width: none; height: 52px; padding: 6px 0; justify-content: space-between; }
+  .hdr-logo { margin-left: 18px; }
+  .hdr-nav, .hdr-action { display: none; }
+  .hdr-actions { gap: 16px; }
+  .hdr-burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 40px;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .hdr-burger .mi { font-size: 24px; }
+
+  .sec-inner, .sec-inner-1080 { max-width: none; }
+
+  .hero-inner { max-width: none; }
+  .hero-h1 span, .hero-h1 span + span { font-size: 40px; line-height: 1.4; letter-spacing: 2px; }
+  .hero-lead { max-width: 100%; }
+  .hero-btns { justify-content: flex-start; align-items: flex-start; }
+  .hero-scroll { width: 113px; }
+  .hero-scroll p { font-size: 12px; letter-spacing: 1.8px; }
+
+  .phero { height: 287px; padding: 120px 0 64px; }
+  .phero-inner { max-width: none; }
+  .phero-en { font-size: 48px; line-height: 1.2; }
+  .phero-ja { font-size: 24px; }
+
+  .about-inner { flex-direction: column; align-items: flex-start; gap: 48px; }
+  .about-photo { width: 640px; max-width: 100%; align-self: center; }
+  .about-photo .photo { aspect-ratio: auto; height: 380px; }
+  .about-h { font-size: 24px; line-height: 1.6; letter-spacing: 1.2px; }
+
+  .scards { gap: 48px; }
+  .scard { flex-basis: calc(50% - 24px); max-width: calc(50% - 24px); }
+  .scard-wide { flex-basis: 100%; max-width: 100%; }
+  .scard-body { padding: 48px 24px; }
+  .scard h3 { font-size: 28px; }
+
+  .pcta-lead { font-size: 24px; letter-spacing: 1.2px; }
+  .pcta-sub { font-size: 14px; letter-spacing: 0.7px; }
+
+  .news { width: 100%; margin-top: 68px; }
+
+  .story { flex-direction: column; gap: 48px; }
+  .story-col { padding-bottom: 0; }
+  .story-img { width: 100%; max-width: 100%; height: 480px; align-self: stretch; }
+
+  .mission { flex-direction: column; gap: 96px; }
+  .mission-txt { width: 100%; max-width: 100%; }
+  .mission-grid .photo { height: 240px; }
+
+  /* Text above image below 768 — the source flips the row with column-reverse. */
+  .mvv { flex-direction: column-reverse; gap: 96px; }
+  .mvv-img { width: 100%; max-width: 100%; height: 480px; }
+  .mvv-txt { width: 100%; max-width: 100%; }
+
+  .profile-col { width: 100%; max-width: 100%; }
+  .access { flex-direction: column-reverse; gap: 48px; }
+  .access-map, .access-txt { width: 100%; max-width: 100%; }
+
+  .srow { flex-direction: column-reverse; gap: 48px; }
+  .srow-txt { width: 100%; max-width: 100%; }
+  .srow-img { width: 100%; height: 320px; }
+
+  .ftr-cta { flex-direction: column; gap: 24px; }
+  .fcta { width: 100%; max-width: 100%; padding: 24px; }
+  .fcta-t { font-size: 28px; letter-spacing: 1.4px; }
+  .fcta-s { margin-top: 12px; font-size: 14px; letter-spacing: 0.7px; }
+  .fcta .mi-48 { font-size: 32px; }
+  /* The footer link row is dropped below 768; only the logo, the privacy link and the
+     copyright remain, stacked and centred. */
+  .ftr-nav { display: none; }
+  .ftr-mid { justify-content: center; margin-top: 32px; }
+  .ftr-bot { flex-direction: column-reverse; align-items: center; gap: 24px; margin-top: 24px; }
+}
+
+/* ================================================================ <= 480px */
+
+@media screen and (max-width: 480px) {
+  .hdr { padding: 12px; }
+  .hdr-logo { margin-left: 0; }
+
+  .sec-inner { padding: 64px 24px; }
+  .sec-en { min-height: 28px; font-size: 28px; }
+  .sec-ja p { font-size: 15px; }
+
+  .hero { height: 712px; padding-top: 24px; }
+  .hero-inner { padding: 0 38px 0 24px; }
+  .hero-h1 span, .hero-h1 span + span { font-size: 28px; line-height: 1.4; letter-spacing: 1.4px; }
+  .only-desktop { display: none !important; }
+  .only-mobile { display: flex !important; }
+  .hero-btns { flex-wrap: wrap; align-items: stretch; gap: 24px; }
+  /* min-width:0 or the red button's nowrap label pushes past the viewport at 375–390. */
+  .hero-btns .btn { flex: 1 0 100%; min-width: 0; padding-inline: 24px; }
+  .hero-btns .btn p { white-space: normal; }
+  .hero-scroll { width: 38px; padding: 0 12px; }
+  .hero-scroll p { font-size: 10px; letter-spacing: 1.5px; }
+  .hero-scroll-line { height: 285px; }
+
+  .phero { height: 278px; }
+  .phero-en { font-size: 40px; }
+
+  .about-photo { width: 100%; }
+  .about-photo .photo { height: 260px; }
+  .about-h { font-size: 22px; letter-spacing: 1.1px; }
+  .about-col .rich { font-size: 18px; letter-spacing: 0.75px; }
+  .about-col .btn, .sec-cream > .sec-inner > .btn-navy, .sec-parallax .btn { width: 100%; }
+
+  .scard, .scard-wide { flex-basis: 100%; max-width: 100%; }
+  .scard-body { padding: 24px; }
+  .scard h3 { font-size: 24px; }
+
+  .pcta-lead { font-size: 20px; letter-spacing: 1px; }
+  .pcta-sub { font-size: 16px; letter-spacing: 0.8px; }
+
+  .news { margin-top: 60px; gap: 36px; padding-bottom: 0; }
+  .news-row { flex-direction: column; gap: 8px; }
+  .news-meta { width: 100%; align-items: center; }
+  .news-date { width: 112px; font-size: 22px; }
+  .news-tag { width: 130px; font-size: 12px; letter-spacing: 0.72px; }
+  .news-title { font-size: 20px; }
+  .news-text { font-size: 16px; }
+
+  .band { flex-direction: column; }
+  .band .photo { flex: none; max-width: 100%; height: 270px; }
+
+  .story, .mission, .mvv, .access { gap: 48px; }
+  .story-img, .mvv-img { height: 260px; }
+  .mission-grid .photo { height: 120px; }
+
+  .srow { padding: 24px; gap: 24px; }
+  .srow-t { font-size: 28px; }
+  .srow-img { height: 220px; }
+  .srows { gap: 48px; }
+
+  /* Definition rows stack below 480: label above value, both full width. */
+  .itable li { flex-direction: column; padding: 12px 0; }
+  .it-label, .access .it-label { flex: none; width: 120px; max-width: none; }
+  .it-value, .access .it-value { max-width: 100%; font-size: 16px; }
+
+  .cintro, .cnotes { padding-left: 24px; padding-right: 24px; }
+  .fcard { padding: 24px; }
+  .cnotes { padding: 0 4px; }
+  /* Long-form pages drop the card inset entirely and step the headings down. */
+  .p-privacy .doc { padding: 0; }
+  .p-thanks .doc { padding: 32px 24px; }
+  .doc-h1 { margin-top: 56px; font-size: 24px; }
+  .doc-h2 { font-size: 18px; }
+
+  .ftr { padding: 64px 0; }
+  .ftr-cta, .ftr-mid { padding: 0 24px; }
+  .ftr-bot { padding: 0 48px; }
+  /* The card is 117px tall in the source — taller than its own content box. */
+  .fcta { min-height: 117px; }
+  .fcta-s { font-size: 12px; }
+  .ftr-mid { margin-top: 48px; }
+  .ftr-copy { text-align: center; }
+}

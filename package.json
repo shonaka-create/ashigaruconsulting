@@ -1,0 +1,18 @@
+{
+  "name": "ashigaru-consulting-clone",
+  "version": "1.0.0",
+  "description": "ashigaru-consulting.co.jp の見た目忠実クローン（確認用デモ / WordPress移行の source of truth）",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && node server.mjs",
+    "serve": "node server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  },
+  "private": true
+}

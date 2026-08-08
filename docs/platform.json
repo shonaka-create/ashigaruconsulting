@@ -1,0 +1,43 @@
+{
+  "origin": "https://ashigaru-consulting.co.jp",
+  "scannedAt": "2026-08-08T01:10:24.842Z",
+  "platforms": [
+    {
+      "platform": "STUDIO",
+      "jsRendered": true,
+      "matched": [
+        "/studio\\.design|studio\\.site/i"
+      ],
+      "dataSource": "SPA。Playwrightでレンダリング後DOMを取る以外の手段は無いと考える"
+    },
+    {
+      "platform": "Nuxt",
+      "jsRendered": true,
+      "matched": [
+        "/\\/_nuxt\\//i",
+        "/__NUXT__/i"
+      ],
+      "dataSource": "__NUXT__ にstate。SSGならHTMLにも中身あり"
+    }
+  ],
+  "probablyJsRendered": true,
+  "homeBodyChars": 0,
+  "generator": "Studio.Design",
+  "server": "Google Frontend",
+  "poweredBy": "",
+  "sitemaps": [
+    "https://ashigaru-consulting.co.jp/sitemap.xml",
+    "https://ashigaru-consulting.co.jp/sitemap-static.xml"
+  ],
+  "sitemapUrlCount": 6,
+  "robotsTxt": "User-agent: Googlebot\nUser-agent: *\nAllow: /\n\nSitemap: https://ashigaru-consulting.co.jp/sitemap.xml",
+  "pages": 21,
+  "live200": 21,
+  "notFound": [],
+  "redirects": [],
+  "orphans": [
+    "https://ashigaru-consulting.co.jp/privacypolicy",
+    "https://ashigaru-consulting.co.jp/service",
+    "https://ashigaru-consulting.co.jp/thanks"
+  ]
+}
