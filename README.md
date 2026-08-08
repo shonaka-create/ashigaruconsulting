@@ -60,6 +60,11 @@ docs/                実測結果・台帳・計画・差異レポート
 | `textdiff.mjs` | 実サイト vs クローン を**文字列で突き合わせて**位置ずれの発生箇所を特定 |
 | `swatch.mjs` / `peek.mjs` | 部品の色・構造の調査 |
 
+## デプロイ
+
+GitHub → Vercel の手順、公開範囲、Deployment Protection の設定は
+[docs/DEPLOY.md](docs/DEPLOY.md) にまとめてある。
+
 ## 読むべき順番
 
 1. [docs/clone-plan.md](docs/clone-plan.md) — 何を作り、何を作らないか、**要判断事項**
