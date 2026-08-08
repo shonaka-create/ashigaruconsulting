@@ -93,7 +93,7 @@ Cocoon移植時の1セクション＝1関数に固定（`build.mjs` 内）。
 | E | `/privacypolicy` のスラッグ（`/privacy-policy` にしない） | 変更するなら301必要。既定は**変えない** |
 | F | 下層ページの `<title>` を個別化するか | ④ seo-analytics-setup で対応可 |
 | G | ロゴ・社名の商標素材はそのまま流用でよいか | 自社素材の想定だが要確認 |
-| H | Vercel デモを社外（クライアント）に見せる際、URL を Deployment Protection で保護するか | 保護しない場合、noindex でも URL を知る第三者は閲覧できる |
+| H | Vercel デモを社外（クライアント）に見せる方式（Password Protection＝Pro有料 / 画面共有 / 保護なし＋期間限定） | **無料のまま客先にURLを渡す方法は無い**。保護しない場合、noindex でも URL を知る第三者は閲覧できる。詳細は [docs/DEPLOY.md](DEPLOY.md) §3 |
 
 ## 検証ゲート
 

@@ -5,50 +5,36 @@
 
 ---
 
-## 1. GitHub へプッシュ
+## 1. GitHub へプッシュ — **完了（2026-08-08）**
 
-ローカルのコミットは作成済み（ブランチ `main`、118ファイル）。
-ただし **プッシュは未完了**。理由と対処は下記。
-
-### 現状
-
-| | |
-|---|---|
-| リポジトリ | `shonaka-create/ashigaruconsulting`（**Public**・空） |
-| `gh` のログイン中アカウント | `shonakacreates2000` |
-| そのアカウントの権限 | `pull` のみ（`push: false`） |
-
-`shonaka-create` と `shonakacreates2000` は**別々の個人アカウント**で、
-後者はリポジトリの共同作業者になっていないため 403 で弾かれる。
-
-### 対処（どれか1つ）
-
-**A. リポジトリ所有者（`shonaka-create`）で `shonakacreates2000` を Collaborator に招待する**
+`shonaka-create/ashigaruconsulting` の `main` に2コミット（119ファイル）をプッシュ済み。
 
 ```
-https://github.com/shonaka-create/ashigaruconsulting/settings/access
-→ Add people → shonakacreates2000 → Write 権限
+b7f5a0f デプロイ手順を追加
+65c01e8 現行サイト(STUDIO)の見た目忠実クローンを追加
 ```
 
-招待を承諾したあと、このディレクトリで:
+### 経緯（同じことで詰まったとき用）
+
+`shonaka-create`（リポジトリ所有者）と `shonakacreates2000`（このマシンの `gh` の
+ログインアカウント）は**別々の個人アカウント**。当初 `shonakacreates2000` の権限は
+`pull` のみで、`git push` は 403 になっていた。
+
+```
+remote: Permission to shonaka-create/ashigaruconsulting.git denied to shonakacreates2000.
+```
+
+所有者側が `shonakacreates2000` を **Write 権限の Collaborator に招待**し、
+それを受諾して解消した。
 
 ```bash
+gh api user/repository_invitations                       # 招待IDを確認
+gh api --method PATCH user/repository_invitations/<ID>   # 受諾
 git push -u origin main
 ```
 
-**B. `shonaka-create` アカウントでログインし直す**
-
-```bash
-gh auth login          # ブラウザ認証。shonaka-create でログイン
-git push -u origin main
-```
-
-**C. `shonakacreates2000` 側にリポジトリを作る**
-
-```bash
-gh repo create shonakacreates2000/ashigaruconsulting --public --source=. --remote=origin2
-git push -u origin2 main
-```
+受諾後の権限は `{"pull":true,"push":true,"triage":true,"maintain":false,"admin":false}`。
+**`admin` は無い**ので、リポジトリの公開設定・Webhook・Settings の変更は所有者しかできない。
 
 ### プッシュされる範囲（重要）
 
@@ -69,15 +55,34 @@ git push -u origin2 main
 
 ## 2. Vercel へ接続
 
-`vercel.json` は作成済みなので、ダッシュボードで Import するだけでよい。
+`vercel.json` は作成済みなので、**ダッシュボードで Import するだけ**でよい。
+
+> **Vercel CLI はこのマシンでは使えない。** コンピューター名が `中胡`（非ASCII）で、
+> CLI がホスト名を HTTP ヘッダーに載せるため `vercel whoami` すら次で落ちる:
+> `TypeError: Cannot convert argument to a ByteString because the character at index 0
+> has a value of 20013`（`20013` = `中`）。CLI を使いたいならPC名を英数字に変える必要がある。
+> **Git 連携なら CLI は不要**で、`git push` するたびに自動デプロイされるのでそちらが本筋。
 
 1. <https://vercel.com/new> → **Import Git Repository** → `ashigaruconsulting` を選択
-2. 設定は**触らない**（`vercel.json` が持っている）
+   - GitHub App の権限を `shonaka-create` の所有リポジトリに向けること
+     （`shonakacreates2000` でログインしている場合、所有者側でのアプリ許可が要る）
+2. 設定は**触らない**（`vercel.json` が全部持っている）
    - Build Command: `node build.mjs`
    - Output Directory: `dist`
    - Framework Preset: Other
-   - Install Command: 既定のまま（`playwright` は devDependency で、ビルドには不要）
+   - Install Command: `echo ...`（**空実行**。理由は下記）
 3. **Deploy**
+
+### Install Command を空にしてある理由
+
+`build.mjs` は**依存ゼロ**で動く。一方 `package.json` の devDependencies には
+`playwright` が入っており、Vercel の既定 `npm install` はこれを入れようとして
+**ブラウザ本体（数百MB）をダウンロードする**。ビルドには一切不要で、時間の無駄でしかない。
+そのため `vercel.json` に `installCommand` を明示して空実行にしてある。
+
+**検証済み（2026-08-08）**: GitHub から clean clone し、`npm install` を一切実行せずに
+`node build.mjs` を実行 → `dist/` に HTML 6 / 画像 15 / `css` / `js` / `robots.txt` /
+`sitemap.xml` が生成されることを確認した。
 
 初回デプロイ後、`https://<project>.vercel.app/` で確認する。
 URL は `/about` `/service` のように**拡張子なし**（`vercel.json` の `cleanUrls`）で、
@@ -108,12 +113,23 @@ URL は `/about` `/service` のように**拡張子なし**（`vercel.json` の 
 
 ```
 Vercel プロジェクト → Settings → Deployment Protection
-→ Vercel Authentication（チーム内のみ）
-   もしくは Password Protection（客先にパスワードを渡す運用。Pro プラン以上）
 ```
 
-Hobby プランで Password Protection が使えない場合は、
-**Vercel Authentication をオンにしたうえで、画面共有か短期の Preview URL で見せる**運用にする。
+| 方式 | 客先が見られるか | 条件 |
+|---|---|---|
+| **Vercel Authentication** | **見られない**。Vercel アカウントでのログイン＋プロジェクトへのアクセス権が要る | 無料 |
+| **Password Protection** | 見られる（パスワードを渡すだけ） | **Pro プラン以上（有料）** |
+| 保護なし | 見られる。**ただしURLを知る第三者も全員見られる** | — |
+
+ここが判断の分かれ目になる。**無料のまま客先に URL を渡す方法は無い。**
+アシガル社に見せる形式は次のどれかを選ぶ:
+
+1. **Password Protection を使う**（Vercel を Pro にする）— 客先が自分の時間に見られる。推奨
+2. **画面共有で見せる**（保護は Vercel Authentication のまま）— 追加費用ゼロ。URL は渡さない
+3. **保護なしで期間を区切って渡す** — 合意が取れたら即座に削除する運用。
+   noindex は入れてあるが、**URL が漏れれば誰でも見られる**ことを承知のうえで選ぶこと
+
+なお、Deployment Protection の変更には **Vercel プロジェクトの権限**が要る（GitHub の権限とは別物）。
 
 ---
 
