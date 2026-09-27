@@ -1198,3 +1198,186 @@ ol.reasons, ol.flow, .crumbs ol { list-style: none; }
   .sec-art .sec-inner { padding-top: 112px; }
   .author { flex-direction: column; }
 }
+
+/* ============================================================ pro service pages
+   /service/seller and /service/buyer. Same tokens as the rest of the site. */
+
+.sec-lead-l { max-width: 760px; align-self: flex-start; margin-top: 32px; }
+.sec-head-gap { margin-top: 40px; }
+
+/* --- hero: left-aligned value proposition over the photo --- */
+.sphero {
+  position: relative;
+  width: 100%;
+  min-height: 640px;
+  padding: 188px 0 88px;
+  display: flex;
+  justify-content: center;
+  background: var(--navy);
+}
+.sphero-bg { position: absolute; inset: 0; }
+.sphero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 28, 60, 0.92) 0%, rgba(0, 40, 86, 0.78) 45%, rgba(0, 53, 113, 0.25) 100%);
+}
+.sphero-inner { position: relative; width: 100%; max-width: 1280px; padding: 0 48px; color: #fff; }
+.sphero-kicker { font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 3px; opacity: 0.85; }
+.sphero-h1 { margin-top: 16px; font-size: 52px; font-weight: 700; line-height: 1.35; letter-spacing: 2px; }
+.sphero-sub { max-width: 620px; margin-top: 24px; font-size: 18px; font-weight: 500; line-height: 1.9; }
+.sphero-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+.sphero-chips { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 32px; }
+.sphero-chips li { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; }
+.sphero-chips .mi { font-size: 18px; color: #9fd0ff; }
+
+/* --- in-page anchor strip --- */
+.anav { width: 100%; background: #fff; border-bottom: 1px solid var(--hair); }
+.anav ul { display: flex; justify-content: center; gap: 4px; max-width: 1280px; margin: 0 auto; padding: 0 48px; overflow-x: auto; scrollbar-width: none; }
+.anav ul::-webkit-scrollbar { display: none; }
+.anav a {
+  display: block;
+  padding: 20px 16px;
+  border-bottom: 2px solid transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.anav a.is-current { border-bottom-color: var(--navy); color: var(--navy); }
+.p-sp-pro section[id] { scroll-margin-top: 108px; }
+.p-sp-pro .sec-inner { align-items: flex-start; }
+
+/* --- worries / purposes --- */
+.worries { display: flex; gap: 24px; width: 100%; margin-top: 56px; }
+.worry { flex: 1 1 0; padding: 32px 24px; border-radius: 8px; background: var(--cream); }
+.worry-i { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: var(--navy); color: #fff; }
+.worry-t { margin-top: 20px; color: var(--ink); font-size: 19px; font-weight: 700; line-height: 1.5; }
+.worry-d { margin-top: 12px; color: var(--body); font-size: 15px; line-height: 1.8; }
+
+/* --- comparison table --- */
+.ctable-wrap { width: 100%; margin-top: 40px; border-radius: 8px; background: #fff; overflow-x: auto; }
+.ctable { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 15px; line-height: 1.6; }
+.ctable th, .ctable td { padding: 20px 20px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--hair); }
+.ctable thead th { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.6px; white-space: nowrap; }
+.ctable thead th:first-child { width: 24%; }
+.ctable tbody th { background: #fbfaf9; }
+.ctable tbody tr:last-child th, .ctable tbody tr:last-child td { border-bottom: 0; }
+.ct-t { display: block; color: var(--ink); font-size: 17px; font-weight: 700; }
+.ct-s { display: block; margin-top: 4px; color: var(--ink-3); font-size: 13px; font-weight: 400; }
+.ctable td { color: var(--body); }
+.ctable td:last-child { font-weight: 700; color: var(--navy); white-space: nowrap; }
+.ctable .is-soft th, .ctable .is-soft td { background: #f3f6fa; }
+.ctable-foot { width: 100%; margin-top: 16px; color: var(--ink-3); font-size: 13px; line-height: 1.7; }
+
+/* --- process timeline --- */
+.tl { width: 100%; margin-top: 48px; list-style: none; }
+.tl-step { display: flex; gap: 24px; }
+.tl-rail { position: relative; flex: none; width: 56px; display: flex; justify-content: center; }
+.tl-rail::after { content: ""; position: absolute; top: 56px; bottom: 0; width: 2px; background: #d5dde8; }
+.tl-step:last-child .tl-rail::after { display: none; }
+.tl-n {
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--navy); color: #fff;
+  font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 1px;
+}
+.tl-card { flex: 1; margin-bottom: 24px; padding: 24px 28px; border-radius: 8px; background: var(--cream); }
+.tl-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.tl-t { color: var(--ink); font-size: 20px; font-weight: 700; line-height: 1.4; }
+.tl-term { padding: 2px 12px; border-radius: 12px; border: 1px solid var(--navy); color: var(--navy); font-size: 12px; font-weight: 700; white-space: nowrap; }
+.tl-free { padding: 2px 12px; border-radius: 12px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; }
+.tl-dl { display: flex; gap: 32px; margin: 16px 0 0; }
+.tl-dl > div { flex: 1 1 0; }
+.tl-dl dt { color: var(--ink-3); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+.tl-dl dd { margin: 4px 0 0; color: var(--ink); font-size: 15px; line-height: 1.7; }
+
+/* --- valuation points --- */
+.vpoints { display: flex; gap: 24px; width: 100%; margin-top: 40px; }
+.vpoint { flex: 1 1 0; padding: 32px 28px; border-radius: 8px; background: #fff; }
+.vpoint-t { margin-top: 20px; color: var(--ink); font-size: 20px; font-weight: 700; }
+.vpoint-d { margin-top: 10px; color: var(--body); font-size: 15px; line-height: 1.8; }
+.vnote { display: flex; align-items: flex-start; gap: 8px; width: 100%; margin-top: 24px; color: var(--ink); font-size: 14px; line-height: 1.7; }
+.vnote .mi { flex: none; margin-top: 2px; color: var(--navy); }
+
+/* --- promises (on navy) --- */
+.proms { display: flex; gap: 24px; width: 100%; margin-top: 56px; list-style: none; }
+.prom { flex: 1 1 0; padding: 36px 28px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.06); color: #fff; }
+.prom-top { display: flex; align-items: center; justify-content: space-between; }
+.prom-n { font-family: Montserrat, sans-serif; font-size: 32px; font-weight: 600; line-height: 1; opacity: 0.5; }
+.prom-t { margin-top: 24px; font-size: 20px; font-weight: 700; line-height: 1.5; }
+.prom-d { margin-top: 14px; font-size: 15px; line-height: 1.9; opacity: 0.92; }
+
+/* --- fee --- */
+.fees { display: flex; gap: 24px; width: 100%; margin-top: 48px; }
+.fee { flex: 1 1 0; padding: 36px 32px; border-radius: 8px; border: 1px solid var(--hair); background: #fff; }
+.fee-free { border: 2px solid var(--navy); }
+.fee-t { color: var(--ink); font-size: 19px; font-weight: 700; }
+.fee-l { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.fee-l li { display: flex; align-items: flex-start; gap: 8px; color: var(--ink); font-size: 16px; line-height: 1.6; }
+.fee-l .mi { flex: none; margin-top: 3px; color: var(--navy); }
+.fee-n { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--hair); color: var(--body); font-size: 14px; line-height: 1.8; }
+
+/* --- closing CTA panel --- */
+.sec-cta .sec-inner { padding-top: 96px; padding-bottom: 96px; }
+.cta-panel { display: flex; align-items: center; gap: 56px; width: 100%; padding: 56px; border-radius: 8px; background: var(--cream); }
+.cta-txt { flex: 1; }
+.cta-h { color: var(--ink); font-size: 30px; font-weight: 700; line-height: 1.5; }
+.cta-p { margin-top: 12px; color: var(--body); font-size: 16px; line-height: 1.8; }
+.cta-guide { display: inline-flex; align-items: center; gap: 6px; margin-top: 24px; color: var(--navy); font-size: 13px; font-weight: 700; text-decoration: underline; }
+.cta-guide .mi { font-size: 18px; }
+.cta-act { flex: none; display: flex; flex-direction: column; gap: 12px; width: 320px; }
+.cta-act .btn { width: 100%; }
+.cta-tel { margin-top: 8px; color: var(--ink); font-size: 14px; text-align: center; }
+.cta-tel a { margin: 0 8px 0 4px; color: var(--navy); font-family: Montserrat, sans-serif; font-size: 22px; font-weight: 700; }
+.cta-tel span { color: var(--ink-3); font-size: 12px; }
+.other { display: flex; align-items: center; gap: 16px; width: 100%; margin-top: 24px; padding: 24px 32px; border-radius: 8px; border: 1px solid var(--hair); color: var(--ink); }
+.other-k { font-size: 13px; font-weight: 700; color: var(--ink-3); }
+.other-t { flex: 1; font-size: 17px; font-weight: 700; }
+.other .mi { color: var(--navy); font-size: 24px; }
+
+@media screen and (max-width: 768px) {
+  .sphero { min-height: 0; padding: 148px 0 64px; }
+  .sphero-h1 { font-size: 38px; letter-spacing: 1px; }
+  .anav ul { justify-content: flex-start; }
+  .worries, .vpoints, .proms, .fees { flex-direction: column; }
+  .worries { flex-direction: row; flex-wrap: wrap; }
+  .worry { flex: 1 1 calc(50% - 12px); }
+  .cta-panel { flex-direction: column; align-items: stretch; gap: 32px; padding: 40px; }
+  .cta-act { width: 100%; }
+}
+@media screen and (max-width: 480px) {
+  .sphero { padding: 120px 0 48px; }
+  .sphero-inner { padding: 0 24px; }
+  .sphero-h1 { font-size: 30px; }
+  .sphero-sub { font-size: 16px; }
+  .sphero-btns .btn { width: 100%; }
+  .sphero-chips { flex-direction: column; gap: 8px; }
+  .anav ul { padding: 0 12px; }
+  .anav a { padding: 16px 12px; font-size: 13px; }
+  .worry { flex-basis: 100%; }
+  .tl-step { gap: 14px; }
+  .tl-rail { width: 40px; }
+  .tl-n { width: 40px; height: 40px; font-size: 13px; }
+  .tl-rail::after { top: 40px; }
+  .tl-card { padding: 20px; }
+  .tl-dl { flex-direction: column; gap: 12px; }
+  .cta-panel { padding: 28px 24px; }
+  .cta-h { font-size: 22px; }
+  .other { padding: 20px; }
+}
+
+/* comparison table → cards below 768: a sideways-scrolling table hides three of its four
+   columns on a phone, so each option becomes its own card with labelled rows. */
+@media screen and (max-width: 768px) {
+  .ctable-wrap { background: none; overflow: visible; border-radius: 0; }
+  .ctable { min-width: 0; }
+  .ctable thead { display: none; }
+  .ctable tbody tr { display: block; margin-bottom: 16px; border-radius: 8px; background: #fff; overflow: hidden; }
+  .ctable tbody tr:last-child { margin-bottom: 0; }
+  .ctable tbody th { display: block; padding: 20px; border-bottom: 1px solid var(--hair); }
+  .ctable td { display: flex; align-items: baseline; gap: 16px; padding: 12px 20px; border-bottom: 1px solid var(--hair); }
+  .ctable td::before { content: attr(data-label); flex: none; width: 8.5em; color: var(--ink-3); font-size: 12px; font-weight: 700; }
+  .ctable td:last-child { white-space: normal; }
+  .ctable tbody tr td:last-child { border-bottom: 0; }
+}

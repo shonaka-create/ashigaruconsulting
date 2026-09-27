@@ -1,7 +1,8 @@
 // Copy for the renewal (proposal Q-20260925-01, docs/PROJECT.md). Everything in
 // src/data/pages.js is the live site transcribed verbatim; everything here is NEW and is
-// draft copy for the client to approve. Facts that are not yet confirmed carry a
-// `draft` flag and render a "仮" note in demo mode — never invent credentials or results.
+// draft copy for the client to approve. Nothing on screen is labelled as provisional
+// (client decision, 2026-09-28), so only confirmed facts may appear as facts — never
+// invent credentials or results.
 
 // LINE: the generic add-friend URL for the official account. To be replaced by the
 // per-channel URL issued in エルメ (PROJECT.md U14) so HP-origin adds can be counted.
@@ -65,11 +66,9 @@ export const consultants = {
   en: "CONSULTANT",
   ja: "コンサルタント紹介",
   lead: "全員が損害保険業界出身というわけではありません。しかし、現場で培った経験をもとに実際の問題解決に取り組んできた、各分野に専門性を持つコンサルタントが集まっています。",
-  draft: true,
-  draftNote: "氏名・経歴・写真は、ご確認いただいたうえで差し替えます（仮）",
+  // Only facts already published on the live site (/about 会社概要) are used here.
   items: [
-    { name: "田端 翔一郎", role: "代表取締役", bio: "（経歴・保有資格をご確認後に掲載）", image: null },
-    { name: "（氏名）", role: "コンサルタント", bio: "（経歴・担当領域をご確認後に掲載）", image: null },
+    { name: "田端 翔一郎", role: "代表取締役", bio: "アシガルコンサルティング株式会社 代表取締役。「現場こそが全て」を信念に、保険代理店の事業承継とM&Aの支援に取り組んでいます。", image: null },
   ],
 };
 
@@ -182,7 +181,6 @@ export const servicePages = [
   {
     slug: "consultation",
     path: "/service/consultation",
-    draft: true,
     title: "無料個別相談のご案内｜保険代理店のM&A・事業承継支援ならアシガルコンサルティング株式会社",
     hero: { en: "CONSULTATION", ja: "無料個別相談のご案内", image: "/images/c7309b02f51b.webp", brightness: 0.55 },
     lead: "「相談する」と「決める」は別のことです。まだ何も決めていない段階で、現状と選択肢を整理する60分の個別相談を無料で承っています。",
@@ -211,7 +209,6 @@ export const servicePages = [
   {
     slug: "valuation",
     path: "/service/valuation",
-    draft: true,
     title: "企業価値の簡易診断｜保険代理店のM&A・事業承継支援ならアシガルコンサルティング株式会社",
     hero: { en: "VALUATION", ja: "企業価値の簡易診断", image: "/images/346af5d2dda7.webp", brightness: 0.55 },
     lead: "譲るかどうかを決める前に、「いくらで譲れるのか」を知っておく。それだけで、選択肢の見え方が変わります。収益性・規模・契約ポートフォリオから、参考となる価値の目安をお伝えします。",
@@ -249,8 +246,6 @@ export const column = {
   ],
   // Sample articles: structure demonstrations for the client. Bodies are short drafts and
   // are labelled as such on the page; real articles are written by the client (proposal 5-4).
-  sample: true,
-  sampleNote: "以下はレイアウト確認用のサンプル記事です。本番の記事は企画フェーズで決めたテーマに沿って執筆します。",
   authorDefault: { name: "アシガルコンサルティング", role: "コンサルタント", bio: "保険代理店のM&A・事業承継支援を専門とする独立系コンサルティング会社。現場で培った経験をもとに、代理店経営者の判断材料になる情報を発信しています。" },
   posts: [
     {

@@ -49,6 +49,7 @@
     ".story-col > *", ".story-img", ".mission-txt", ".mission-grid li",
     ".mvv-img", ".mvv-txt", ".itable li", ".srow", ".pcta", ".fcta",
     ".hero-h1 span", ".hero-copy", ".phero-inner > *", ".doc > *", ".cintro > *",
+    ".sphero-inner > *", ".worry", ".tl-step", ".vpoint", ".prom", ".fee", ".cta-panel", ".ent", ".reason", ".cons", ".pcard", ".flow-step", ".opt",
   ].join(",");
 
   var targets = [].slice.call(document.querySelectorAll(revealSelector));
@@ -80,6 +81,30 @@
       all.forEach(function (el) {
         if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("is-revealed");
       });
+    });
+  }
+
+  /* ----------------------------------------------------------- anchor strip */
+
+  // Long service pages: mark the anchor whose section is currently on screen.
+  var anav = [].slice.call(document.querySelectorAll(".anav a"));
+  if (anav.length && "IntersectionObserver" in window) {
+    var byId = {};
+    anav.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          anav.forEach(function (a) { a.classList.remove("is-current"); });
+          var cur = byId[entry.target.id];
+          if (cur) cur.classList.add("is-current");
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    Object.keys(byId).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) spy.observe(el);
     });
   }
 

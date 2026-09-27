@@ -84,7 +84,7 @@ git push -u origin main
 `node build.mjs` を実行 → `dist/` に HTML 6 / 画像 15 / `css` / `js` / `robots.txt` /
 `sitemap.xml` が生成されることを確認した。
 
-初回デプロイ後、`https://<project>.vercel.app/` で確認する。
+初回デプロイ後、`https://<project>.vercel.app/` で確認する。**実際のURLは `https://ashigaruconsulting.vercel.app/`**（2026-09-27 リニューアル版をデプロイ済み。詳細は [renewal.md](renewal.md)）。
 URL は `/about` `/service` のように**拡張子なし**（`vercel.json` の `cleanUrls`）で、
 本番サイトと完全に一致する。
 
@@ -97,7 +97,9 @@ URL は `/about` `/service` のように**拡張子なし**（`vercel.json` の 
 /contact          200   ← フォームは表示のみ。送信できないこと
 /privacypolicy    200
 /thanks           200
-/存在しないパス    404   ← 現行サイトは200を返すが、クローンは意図的に404
+/service/seller   200   ← リニューアル版（2026-09-27〜）
+/column           200   ← 同上
+/存在しないパス    404   ← 現行サイトは200を返すが、クローンは意図的に404（dist/404.html）
 /robots.txt       Disallow: /
 ```
 

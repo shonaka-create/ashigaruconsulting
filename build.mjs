@@ -9,6 +9,7 @@ import { mkdirSync, writeFileSync, cpSync } from "node:fs";
 import { site, navLinks, navActions, drawerLinks, footerLinks, footerCta } from "./src/data/site.js";
 import { home, about, service, contact, thanks, privacy } from "./src/data/pages.js";
 import { line, entrances, reasons, consultants, serviceHub, servicePages, column } from "./src/data/renewal.js";
+import { pro, trust } from "./src/data/service-pro.js";
 
 const OUT = "dist";
 
@@ -144,10 +145,6 @@ function lineMark() {
   return `<svg class="line-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.6 4.9 4.1 6.4-.1.6-.6 2.4-.7 2.8 0 0-.1.4.2.5.3.1.5 0 .5 0 .8-.3 4-2.6 4.6-3.1.4 0 .9.1 1.3.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>`;
 }
 
-function draftNote(text) {
-  return MODE === "production" ? "" : `<p class="draft-note">（仮）${text}</p>`;
-}
-
 function lineCta({ compact = false } = {}) {
   return `<section class="sec sec-navy sec-line${compact ? " sec-line-compact" : ""}">
       <div class="sec-inner sec-inner-1080 line-inner">
@@ -210,7 +207,6 @@ function consultantsSection({ withLink = true } = {}) {
       <div class="sec-inner sec-inner-1080">
         ${heading(consultants.en, consultants.ja)}
         <p class="sec-lead">${consultants.lead}</p>
-        ${consultants.draft ? draftNote(consultants.draftNote) : ""}
         <ul class="conss">
           ${cards}
         </ul>
@@ -571,7 +567,6 @@ function renderServicePage(p) {
     <section class="sec sec-white">
       <div class="sec-inner sec-inner-1080 sp-intro">
         ${crumbs([{ label: "ホーム", href: "/" }, { label: "サービス紹介", href: "/service" }, { label: p.hero.ja }])}
-        ${p.draft ? draftNote("このページの内容は企画フェーズで確定します。見出しと構成の確認用です。") : ""}
         <p class="sp-lead">${p.lead}</p>
         <div class="sp-aud">
           <h2 class="sp-h2">${p.audience.title}</h2>
@@ -619,6 +614,154 @@ ${
   return page({ title: p.title, path: p.path, body, bodyClass: "p-sp" });
 }
 
+// Long-form service page (seller / buyer). Section order follows how a prospect decides:
+// worry → options → process → valuation → promise → fee → FAQ → contact.
+function renderProServicePage(p) {
+  const d = pro[p.slug];
+  const other = p.slug === "seller" ? entrances.items[1] : entrances.items[0];
+  const lineBtn = `<a class="btn btn-line" href="${line.url}" target="_blank" rel="noopener" data-cta="line">${lineMark()}<p>${line.label}</p></a>`;
+
+  const compare = `<div class="ctable-wrap" tabindex="0" role="region" aria-label="${d.options.ja}">
+          <table class="ctable">
+            <thead><tr><th scope="col"></th>${d.options.cols.map((c) => `<th scope="col">${c}</th>`).join("")}</tr></thead>
+            <tbody>
+              ${d.options.rows
+                .map(
+                  (r) => `<tr${r.note ? ' class="is-soft"' : ""}><th scope="row"><span class="ct-t">${r.t}</span><span class="ct-s">${r.s}</span></th>${r.c.map((c, i) => `<td data-label="${d.options.cols[i]}">${c}</td>`).join("")}</tr>`
+                )
+                .join("\n              ")}
+            </tbody>
+          </table>
+        </div>`;
+
+  const steps = d.process.steps
+    .map(
+      (s, i) => `<li class="tl-step">
+            <div class="tl-rail"><span class="tl-n">${String(i + 1).padStart(2, "0")}</span></div>
+            <div class="tl-card">
+              <div class="tl-head"><h3 class="tl-t">${s.t}</h3><span class="tl-term">${s.term}</span>${s.free ? '<span class="tl-free">無料</span>' : ""}</div>
+              <dl class="tl-dl">
+                <div><dt>お客様</dt><dd>${s.you}</dd></div>
+                <div><dt>当社</dt><dd>${s.we}</dd></div>
+              </dl>
+            </div>
+          </li>`
+    )
+    .join("\n          ");
+
+  const body = `    <div class="sphero">
+      ${photo(p.hero.image, { cls: "sphero-bg" })}
+      <div class="sphero-inner">
+        <p class="sphero-kicker">${d.hero.kicker}</p>
+        <h1 class="sphero-h1">${d.hero.headline}</h1>
+        <p class="sphero-sub">${d.hero.sub}</p>
+        <div class="sphero-btns">
+          ${lineBtn}
+          ${button("フォームから相談する", "/contact", "white")}
+        </div>
+        <ul class="sphero-chips">${d.hero.chips.map((c) => `<li>${icon("check_circle")}<span>${c}</span></li>`).join("")}</ul>
+      </div>
+    </div>
+
+    <nav class="anav" aria-label="このページの内容">
+      <ul>${d.anchors.map((a) => `<li><a href="#${a.id}">${a.label}</a></li>`).join("")}</ul>
+    </nav>
+
+    <section class="sec sec-white" id="worries">
+      <div class="sec-inner sec-inner-1080">
+        ${crumbs([{ label: "ホーム", href: "/" }, { label: "サービス紹介", href: "/service" }, { label: p.hero.ja }])}
+        ${heading(d.worries.en, d.worries.ja, "sec-head-gap")}
+        <ul class="worries">
+          ${d.worries.items.map((w) => `<li class="worry"><span class="worry-i">${icon(w.icon, "mi-24")}</span><h3 class="worry-t">${w.t}</h3><p class="worry-d">${w.d}</p></li>`).join("\n          ")}
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec sec-cream" id="options">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(d.options.en, d.options.ja)}
+        <p class="sec-lead sec-lead-l">${d.options.lead}</p>
+        ${compare}
+        <p class="ctable-foot">${d.options.foot}</p>
+      </div>
+    </section>
+
+    <section class="sec sec-white" id="process">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(d.process.en, d.process.ja)}
+        <p class="sec-lead sec-lead-l">${d.process.lead}</p>
+        <ol class="tl">
+          ${steps}
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec sec-cream" id="valuation">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(d.valuation.en, d.valuation.ja)}
+        <p class="sec-lead sec-lead-l">${d.valuation.lead}</p>
+        <ul class="vpoints">
+          ${d.valuation.points.map((v) => `<li class="vpoint"><span class="worry-i">${icon(v.icon, "mi-24")}</span><h3 class="vpoint-t">${v.t}</h3><p class="vpoint-d">${v.d}</p></li>`).join("\n          ")}
+        </ul>
+        <p class="vnote">${icon("info")}<span>${d.valuation.note}</span></p>
+      </div>
+    </section>
+
+    <section class="sec sec-navy" id="promise">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(d.promise.en, d.promise.ja, "on-navy")}
+        <ol class="proms">
+          ${d.promise.items.map((m, i) => `<li class="prom"><div class="prom-top"><span class="prom-n">0${i + 1}</span>${icon(m.icon, "mi-24")}</div><h3 class="prom-t">${m.t}</h3><p class="prom-d">${m.d}</p></li>`).join("\n          ")}
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec sec-white" id="fee">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(d.fee.en, d.fee.ja)}
+        <div class="fees">
+          <div class="fee fee-free">
+            <h3 class="fee-t">${d.fee.free.t}</h3>
+            <ul class="fee-l">${d.fee.free.items.map((i) => `<li>${icon("check")}<span>${i}</span></li>`).join("")}</ul>
+          </div>
+          <div class="fee">
+            <h3 class="fee-t">${d.fee.paid.t}</h3>
+            <ul class="fee-l">${d.fee.paid.items.map((i) => `<li>${icon("arrow_right")}<span>${i}</span></li>`).join("")}</ul>
+            <p class="fee-n">${d.fee.paid.note}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-cream" id="faq">
+      <div class="sec-inner sec-inner-1080">
+        ${heading("FAQ", "よくある質問")}
+        <div class="faqs">
+          ${d.faq.map((f) => `<details class="faq"><summary><span class="faq-q">${f.q}</span>${icon("keyboard_arrow_down")}</summary><p class="faq-a">${f.a}</p></details>`).join("\n          ")}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-white sec-cta">
+      <div class="sec-inner sec-inner-1080">
+        <div class="cta-panel">
+          <div class="cta-txt">
+            <h2 class="cta-h">${d.cta.h}</h2>
+            <p class="cta-p">${d.cta.p}</p>
+            <a class="cta-guide" href="${trust.guideline.href}" target="_blank" rel="noopener">${icon("verified_user")}<span>${trust.guideline.label}</span></a>
+          </div>
+          <div class="cta-act">
+            ${lineBtn}
+            ${button("フォームから相談する", "/contact", "navy")}
+            <p class="cta-tel">お電話 <a href="tel:${site.tel}">${site.tel}</a><span>${trust.hours}</span></p>
+          </div>
+        </div>
+        <a class="other" href="${other.href}"><span class="other-k">${other.kicker}</span><span class="other-t">${other.cta}</span>${icon("keyboard_arrow_right")}</a>
+      </div>
+    </section>`;
+  return page({ title: p.title, path: p.path, body, bodyClass: "p-sp p-sp-pro" });
+}
+
 function renderColumnIndex() {
   const d = column;
   const body = `${pageHero(d.hero)}
@@ -627,7 +770,6 @@ function renderColumnIndex() {
       <div class="sec-inner sec-inner-1080">
         ${crumbs([{ label: "ホーム", href: "/" }, { label: "お役立ち記事" }])}
         <p class="sp-lead">${d.lead}</p>
-        ${d.sample ? draftNote(d.sampleNote) : ""}
         <ul class="cats">
           <li><a class="cat is-active" href="/column">すべて</a></li>
           ${d.categories.map((c) => `<li><a class="cat" href="/column#${c.key}">${c.label}</a></li>`).join("")}
@@ -652,7 +794,6 @@ function renderPost(p) {
           ${crumbs([{ label: "ホーム", href: "/" }, { label: "お役立ち記事", href: "/column" }, { label: cat ? cat.label : "" }])}
           <div class="pcard-meta"><p class="pcard-date">${p.date}</p><p class="pcard-cat">${cat ? cat.label : ""}</p></div>
           <h1 class="art-h1">${p.title}</h1>
-          ${column.sample ? draftNote(column.sampleNote) : ""}
           ${photo(p.image, { cls: "art-img" })}
           ${blocks}
           <aside class="author">
@@ -781,7 +922,7 @@ const PAGES = [
   ["thanks.html", renderThanks()],
   ["privacypolicy.html", renderPrivacy()],
   ["404.html", render404()],
-  ...servicePages.map((p) => [`service/${p.slug}.html`, renderServicePage(p)]),
+  ...servicePages.map((p) => [`service/${p.slug}.html`, pro[p.slug] ? renderProServicePage(p) : renderServicePage(p)]),
   ["column.html", renderColumnIndex()],
   ...column.posts.map((p) => [`column/${p.slug}.html`, renderPost(p)]),
 ];
