@@ -796,6 +796,7 @@ function renderPost(p) {
           <h1 class="art-h1">${p.title}</h1>
           ${photo(p.image, { cls: "art-img" })}
           ${blocks}
+          ${p.sources ? `<div class="art-src"><p class="art-src-t">出典</p><ul>${p.sources.map((x) => `<li><a href="${x.href}" target="_blank" rel="noopener">${x.label}</a></li>`).join("")}</ul></div>` : ""}
           <aside class="author">
             <div class="cons-ph">${icon("person", "mi-48")}</div>
             <div><p class="author-l">この記事を書いた人</p><p class="author-n">${a.name}<span>${a.role}</span></p><p class="author-b">${a.bio}</p></div>

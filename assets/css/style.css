@@ -1381,3 +1381,9 @@ ol.reasons, ol.flow, .crumbs ol { list-style: none; }
   .ctable td:last-child { white-space: normal; }
   .ctable tbody tr td:last-child { border-bottom: 0; }
 }
+
+/* article sources */
+.art-src { margin-top: 40px; padding: 20px 24px; border-left: 3px solid var(--navy); background: var(--cream); }
+.art-src-t { color: var(--ink); font-size: 13px; font-weight: 700; letter-spacing: 1px; }
+.art-src ul { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.art-src a { color: var(--navy); font-size: 14px; line-height: 1.6; text-decoration: underline; }
