@@ -8,8 +8,15 @@
 import { mkdirSync, writeFileSync, cpSync } from "node:fs";
 import { site, navLinks, navActions, drawerLinks, footerLinks, footerCta } from "./src/data/site.js";
 import { home, about, service, contact, thanks, privacy } from "./src/data/pages.js";
+import { line, entrances, reasons, consultants, serviceHub, servicePages, column } from "./src/data/renewal.js";
 
 const OUT = "dist";
+
+// Renewal navigation: the live nav (site.js, verbatim) plus the new お役立ち記事 entry,
+// inserted at build time so the transcription files stay untouched.
+const NAV = [...navLinks.slice(0, 3), { label: "お役立ち記事", href: "/column" }, ...navLinks.slice(3)];
+const DRAWER = [...drawerLinks.slice(0, 3), { label: "COLUMN / お役立ち記事", href: "/column" }, ...drawerLinks.slice(3)];
+const FOOTER_LINKS = [...footerLinks.slice(0, 3), { label: "お役立ち記事", href: "/column" }, ...footerLinks.slice(3)];
 // Demo by default. `SITE_MODE=production node build.mjs` flips robots/sitemap/canonical
 // together — see docs/clone-plan.md. Nothing else in the build reads this.
 const MODE = process.env.SITE_MODE === "production" ? "production" : "demo";
@@ -39,7 +46,7 @@ function head(title, path) {
 }
 
 function header() {
-  const links = navLinks
+  const links = NAV
     .map((l) => `<a class="hdr-link" href="${l.href}"><p>${l.label}</p></a>`)
     .join("\n        ");
   const actions = navActions
@@ -65,7 +72,7 @@ function header() {
     <div class="drawer-panel">
       <button class="drawer-close" type="button" aria-label="メニューを閉じる">${icon("close")}</button>
       <nav class="drawer-nav">
-        ${drawerLinks.map((l) => `<a href="${l.href}"><p>${l.label}</p></a>`).join("\n        ")}
+        ${DRAWER.map((l) => `<a href="${l.href}"><p>${l.label}</p></a>`).join("\n        ")}
       </nav>
       <div class="drawer-foot"><a href="/privacypolicy">個人情報保護方針</a></div>
     </div>
@@ -81,7 +88,7 @@ function footer() {
       </a>`
     )
     .join("\n      ");
-  const links = footerLinks
+  const links = FOOTER_LINKS
     .map((l) => `<a href="${l.href}"><p>${l.label}</p>${l.icon ? icon(l.icon, "mi-16") : ""}</a>`)
     .join("\n          ");
   return `<footer class="ftr">
@@ -119,9 +126,153 @@ function page({ title, path, body, bodyClass = "" }) {
 ${body}
   </main>
   ${footer()}
+  ${stickyLine()}
   ${demoNotice}
   <script src="/js/main.js"></script>
 </body>`;
+}
+
+/* ------------------------------------------------------ renewal components */
+
+// Mobile-only floating LINE button (proposal 4-3: 追従ボタン). Fixed, so it never moves layout.
+function stickyLine() {
+  return `<a class="sticky-line" href="${line.url}" target="_blank" rel="noopener" data-cta="line">${lineMark()}<span>${line.label}</span></a>`;
+}
+
+function lineMark() {
+  // Simple speech-bubble mark; not the LINE trademark artwork (brand assets are not bundled).
+  return `<svg class="line-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.6 1.6 4.9 4.1 6.4-.1.6-.6 2.4-.7 2.8 0 0-.1.4.2.5.3.1.5 0 .5 0 .8-.3 4-2.6 4.6-3.1.4 0 .9.1 1.3.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>`;
+}
+
+function draftNote(text) {
+  return MODE === "production" ? "" : `<p class="draft-note">（仮）${text}</p>`;
+}
+
+function lineCta({ compact = false } = {}) {
+  return `<section class="sec sec-navy sec-line${compact ? " sec-line-compact" : ""}">
+      <div class="sec-inner sec-inner-1080 line-inner">
+        <div class="line-txt">
+          <p class="line-h">${line.sub}</p>
+          <p class="line-p">${line.note}</p>
+        </div>
+        <a class="btn btn-line" href="${line.url}" target="_blank" rel="noopener" data-cta="line">${lineMark()}<p>${line.label}</p></a>
+      </div>
+    </section>`;
+}
+
+function entrancesSection() {
+  const cards = entrances.items
+    .map(
+      (e) => `<a class="ent" href="${e.href}" data-ent="${e.key}">
+            ${photo(e.image, { brightness: e.brightness, cls: "ent-img" })}
+            <div class="ent-body">
+              <p class="ent-kicker">${e.kicker}</p>
+              <h3 class="ent-title">${e.title}</h3>
+              <ul class="ent-points">${e.points.map((p) => `<li>${p}</li>`).join("")}</ul>
+              <p class="ent-cta">${e.cta}${icon("keyboard_arrow_right")}</p>
+            </div>
+          </a>`
+    )
+    .join("\n          ");
+  return `    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(entrances.en, entrances.ja)}
+        <div class="ents">
+          ${cards}
+        </div>
+      </div>
+    </section>`;
+}
+
+function reasonsSection() {
+  return `    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(reasons.en, reasons.ja)}
+        <ol class="reasons">
+          ${reasons.items
+            .map((r, i) => `<li class="reason"><p class="reason-n">0${i + 1}</p><h3 class="reason-t">${r.title}</h3><p class="reason-b">${r.body}</p></li>`)
+            .join("\n          ")}
+        </ol>
+      </div>
+    </section>`;
+}
+
+function consultantsSection({ withLink = true } = {}) {
+  const cards = consultants.items
+    .map(
+      (c) => `<li class="cons">
+            <div class="cons-photo">${c.image ? photo(c.image) : `<div class="cons-ph">${icon("person", "mi-48")}</div>`}</div>
+            <div class="cons-txt"><p class="cons-role">${c.role}</p><p class="cons-name">${c.name}</p><p class="cons-bio">${c.bio}</p></div>
+          </li>`
+    )
+    .join("\n          ");
+  return `    <section class="sec sec-cream">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(consultants.en, consultants.ja)}
+        <p class="sec-lead">${consultants.lead}</p>
+        ${consultants.draft ? draftNote(consultants.draftNote) : ""}
+        <ul class="conss">
+          ${cards}
+        </ul>
+        ${withLink ? button("会社概要を見る", "/about", "navy btn-bold") : ""}
+      </div>
+    </section>`;
+}
+
+function postCard(p) {
+  const cat = column.categories.find((c) => c.key === p.category);
+  return `<a class="pcard" href="/column/${p.slug}">
+            ${photo(p.image, { cls: "pcard-img" })}
+            <div class="pcard-body">
+              <div class="pcard-meta"><p class="pcard-date">${p.date}</p><p class="pcard-cat">${cat ? cat.label : ""}</p></div>
+              <h3 class="pcard-t">${p.title}</h3>
+              <p class="pcard-x">${p.excerpt}</p>
+            </div>
+          </a>`;
+}
+
+function latestColumnSection() {
+  return `    <section class="sec sec-white" id="column">
+      <div class="sec-inner sec-inner-1080">
+        ${heading("COLUMN", "お役立ち記事")}
+        <div class="pcards">
+          ${column.posts.slice(0, 3).map(postCard).join("\n          ")}
+        </div>
+        ${button("記事一覧を見る", "/column", "navy btn-bold")}
+      </div>
+    </section>`;
+}
+
+function flowSection(flow) {
+  return `    <section class="sec sec-white">
+      <div class="sec-inner">
+        ${heading(flow.en, flow.ja)}
+        <ol class="flow">
+          ${flow.steps
+            .map((s, i) => `<li class="flow-step"><p class="flow-n">${String(i + 1).padStart(2, "0")}</p><p class="flow-t">${s.t}</p><p class="flow-d">${s.d}</p></li>`)
+            .join("\n          ")}
+        </ol>
+      </div>
+    </section>`;
+}
+
+function faqSection(items) {
+  return `    <section class="sec sec-cream">
+      <div class="sec-inner sec-inner-1080">
+        ${heading("FAQ", "よくある質問")}
+        <div class="faqs">
+          ${items
+            .map((f) => `<details class="faq"><summary><span class="faq-q">${f.q}</span>${icon("keyboard_arrow_down")}</summary><p class="faq-a">${f.a}</p></details>`)
+            .join("\n          ")}
+        </div>
+      </div>
+    </section>`;
+}
+
+function crumbs(items) {
+  return `<nav class="crumbs" aria-label="パンくず"><ol>${items
+    .map((c) => (c.href ? `<li><a href="${c.href}">${c.label}</a></li>` : `<li><span>${c.label}</span></li>`))
+    .join("")}</ol></nav>`;
 }
 
 /* ------------------------------------------------------------- sections */
@@ -223,6 +374,8 @@ function renderHome() {
       <div class="hero-scroll"><p>SCROLL</p><span class="hero-scroll-line"></span></div>
     </div>
 
+${entrancesSection()}
+
     <section class="sec sec-navy">
       <div class="sec-inner sec-inner-1080 about-inner">
         <div class="about-col">
@@ -247,6 +400,10 @@ function renderHome() {
       </div>
     </section>
 
+${reasonsSection()}
+
+${consultantsSection()}
+
     <section class="sec sec-parallax">
       <div class="sec-inner sec-inner-1080">
         <div class="pcta">
@@ -265,6 +422,10 @@ function renderHome() {
         </div>
       </div>
     </section>
+
+${latestColumnSection()}
+
+${lineCta()}
 
     <div class="band">
       ${d.band.map((b) => photo(b.image, { brightness: b.brightness })).join("\n      ")}
@@ -321,6 +482,8 @@ ${mvv(d.vision, 60)}
 
 ${mvv(d.value, 120)}
 
+${consultantsSection({ withLink: false })}
+
     <section class="sec sec-white">
       <div class="sec-inner">
         <div class="profile">
@@ -361,7 +524,30 @@ function renderService() {
           </li>`
     )
     .join("\n          ");
+  const hub = serviceHub;
   const body = `${pageHero(d.hero)}
+
+    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080">
+        ${heading(hub.intro.en, hub.intro.ja)}
+        <p class="sec-lead">${hub.intro.body}</p>
+        <div class="ents ents-tight">
+          ${entrances.items
+            .map(
+              (e) => `<a class="ent" href="${e.href}" data-ent="${e.key}">
+            ${photo(e.image, { brightness: e.brightness, cls: "ent-img" })}
+            <div class="ent-body">
+              <p class="ent-kicker">${e.kicker}</p>
+              <h3 class="ent-title">${e.title}</h3>
+              <ul class="ent-points">${e.points.map((p) => `<li>${p}</li>`).join("")}</ul>
+              <p class="ent-cta">${e.cta}${icon("keyboard_arrow_right")}</p>
+            </div>
+          </a>`
+            )
+            .join("\n          ")}
+        </div>
+      </div>
+    </section>
 
     <section class="sec sec-cream">
       <div class="sec-inner">
@@ -370,8 +556,129 @@ function renderService() {
           ${items}
         </ul>
       </div>
-    </section>`;
+    </section>
+
+${flowSection(hub.flow)}
+
+${lineCta()}`;
   return page({ title: d.title, path: "/service", body, bodyClass: "p-service" });
+}
+
+function renderServicePage(p) {
+  const other = p.slug === "seller" ? entrances.items[1] : p.slug === "buyer" ? entrances.items[0] : null;
+  const body = `${pageHero(p.hero)}
+
+    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080 sp-intro">
+        ${crumbs([{ label: "ホーム", href: "/" }, { label: "サービス紹介", href: "/service" }, { label: p.hero.ja }])}
+        ${p.draft ? draftNote("このページの内容は企画フェーズで確定します。見出しと構成の確認用です。") : ""}
+        <p class="sp-lead">${p.lead}</p>
+        <div class="sp-aud">
+          <h2 class="sp-h2">${p.audience.title}</h2>
+          <ul class="sp-checks">${p.audience.items.map((i) => `<li>${icon("check_circle")}<span>${i}</span></li>`).join("")}</ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-cream">
+      <div class="sec-inner sec-inner-1080">
+        <h2 class="sp-h2 sp-h2-c">${p.options.title}</h2>
+        <ul class="opts">
+          ${p.options.items.map((o) => `<li class="opt"><p class="opt-t">${o.t}</p><p class="opt-d">${o.d}</p></li>`).join("\n          ")}
+        </ul>
+      </div>
+    </section>
+${
+  p.valuation
+    ? `
+    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080 sp-two">
+        <div class="sp-two-col"><h2 class="sp-h2">${p.valuation.title}</h2><p class="sp-p">${p.valuation.body}</p></div>
+        <div class="sp-two-col"><h2 class="sp-h2">${p.promise.title}</h2><p class="sp-p">${p.promise.body}</p></div>
+      </div>
+    </section>
+`
+    : ""
+}
+${faqSection(p.faq)}
+
+${flowSection(serviceHub.flow)}
+
+${lineCta()}
+${
+  other
+    ? `
+    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080 sp-other">
+        <p class="sp-other-l">${other.kicker}</p>
+        ${button(other.cta, other.href, "navy btn-bold")}
+      </div>
+    </section>`
+    : ""
+}`;
+  return page({ title: p.title, path: p.path, body, bodyClass: "p-sp" });
+}
+
+function renderColumnIndex() {
+  const d = column;
+  const body = `${pageHero(d.hero)}
+
+    <section class="sec sec-white">
+      <div class="sec-inner sec-inner-1080">
+        ${crumbs([{ label: "ホーム", href: "/" }, { label: "お役立ち記事" }])}
+        <p class="sp-lead">${d.lead}</p>
+        ${d.sample ? draftNote(d.sampleNote) : ""}
+        <ul class="cats">
+          <li><a class="cat is-active" href="/column">すべて</a></li>
+          ${d.categories.map((c) => `<li><a class="cat" href="/column#${c.key}">${c.label}</a></li>`).join("")}
+        </ul>
+        <div class="pcards pcards-grid">
+          ${d.posts.map(postCard).join("\n          ")}
+        </div>
+      </div>
+    </section>
+
+${lineCta()}`;
+  return page({ title: d.title, path: "/column", body, bodyClass: "p-column" });
+}
+
+function renderPost(p) {
+  const cat = column.categories.find((c) => c.key === p.category);
+  const a = column.authorDefault;
+  const blocks = p.body.map((b) => (b.h ? `<h2 class="art-h2">${b.h}</h2>` : `<p class="art-p">${b.p}</p>`)).join("\n          ");
+  const body = `    <section class="sec sec-white sec-art">
+      <div class="sec-inner sec-inner-1080">
+        <article class="art">
+          ${crumbs([{ label: "ホーム", href: "/" }, { label: "お役立ち記事", href: "/column" }, { label: cat ? cat.label : "" }])}
+          <div class="pcard-meta"><p class="pcard-date">${p.date}</p><p class="pcard-cat">${cat ? cat.label : ""}</p></div>
+          <h1 class="art-h1">${p.title}</h1>
+          ${column.sample ? draftNote(column.sampleNote) : ""}
+          ${photo(p.image, { cls: "art-img" })}
+          ${blocks}
+          <aside class="author">
+            <div class="cons-ph">${icon("person", "mi-48")}</div>
+            <div><p class="author-l">この記事を書いた人</p><p class="author-n">${a.name}<span>${a.role}</span></p><p class="author-b">${a.bio}</p></div>
+          </aside>
+          <div class="art-back">${button("記事一覧へ戻る", "/column", "plain", { icon: "keyboard_arrow_left" })}</div>
+        </article>
+      </div>
+    </section>
+
+${lineCta({ compact: true })}`;
+  return page({ title: `${p.title}｜アシガルコンサルティング株式会社`, path: `/column/${p.slug}`, body, bodyClass: "p-post" });
+}
+
+function render404() {
+  const body = `    <section class="sec sec-cream sec-doc">
+      <div class="sec-inner sec-inner-1080">
+        <div class="doc">
+          <h1 class="doc-h1">ページが見つかりません</h1>
+          <div class="rich doc-rich"><p>お探しのページは移動または削除された可能性があります。</p></div>
+          <div class="doc-back">${button("ホームへ戻る", "/", "plain")}</div>
+        </div>
+      </div>
+    </section>`;
+  return page({ title: `ページが見つかりません｜${site.name}`, path: "/404", body, bodyClass: "p-404" });
 }
 
 function renderContact() {
@@ -473,11 +780,17 @@ const PAGES = [
   ["contact.html", renderContact()],
   ["thanks.html", renderThanks()],
   ["privacypolicy.html", renderPrivacy()],
+  ["404.html", render404()],
+  ...servicePages.map((p) => [`service/${p.slug}.html`, renderServicePage(p)]),
+  ["column.html", renderColumnIndex()],
+  ...column.posts.map((p) => [`column/${p.slug}.html`, renderPost(p)]),
 ];
 
 // Overwrite in place rather than wiping the directory: this repo lives inside a Dropbox
 // synced folder, which holds handles open and makes rm of the directory itself EPERM.
 mkdirSync(OUT, { recursive: true });
+mkdirSync(`${OUT}/service`, { recursive: true });
+mkdirSync(`${OUT}/column`, { recursive: true });
 
 const doctype = "<!doctype html>\n<html lang=\"ja\">\n<head>\n  ";
 for (const [name, html] of PAGES) {
@@ -487,7 +800,13 @@ for (const [name, html] of PAGES) {
 cpSync("assets", `${OUT}`, { recursive: true });
 cpSync("public/images", `${OUT}/images`, { recursive: true });
 
-const urls = ["/", "/about", "/service", "/contact", "/thanks", "/privacypolicy"];
+// /thanks is deliberately left out of the sitemap (PROJECT.md: noindex).
+const urls = [
+  "/", "/about", "/service", "/contact", "/privacypolicy",
+  ...servicePages.map((p) => p.path),
+  "/column",
+  ...column.posts.map((p) => `/column/${p.slug}`),
+];
 writeFileSync(
   `${OUT}/robots.txt`,
   MODE === "production"

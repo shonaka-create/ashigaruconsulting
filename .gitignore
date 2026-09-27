@@ -34,3 +34,10 @@ Thumbs.db
 
 # 提案書ビルド（docs/proposal/ を扱うため、このリポジトリでは対象外）
 tools/build-proposal.mjs
+
+# 案件設計書・ヒアリングシート（補助金・金額・担当者名を含むため公開リポジトリには出さない）
+docs/PROJECT.md
+docs/intake-sheet.md
+# 認証情報メモ（site-project-intake の memo 方式）
+memo
+credentials.md
