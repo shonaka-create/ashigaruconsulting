@@ -621,18 +621,34 @@ function renderProServicePage(p) {
   const other = p.slug === "seller" ? entrances.items[1] : entrances.items[0];
   const lineBtn = `<a class="btn btn-line" href="${line.url}" target="_blank" rel="noopener" data-cta="line">${lineMark()}<p>${line.label}</p></a>`;
 
-  const compare = `<div class="ctable-wrap" tabindex="0" role="region" aria-label="${d.options.ja}">
-          <table class="ctable">
-            <thead><tr><th scope="col"></th>${d.options.cols.map((c) => `<th scope="col">${c}</th>`).join("")}</tr></thead>
-            <tbody>
-              ${d.options.rows
-                .map(
-                  (r) => `<tr${r.note ? ' class="is-soft"' : ""}><th scope="row"><span class="ct-t">${r.t}</span><span class="ct-s">${r.s}</span></th>${r.c.map((c, i) => `<td data-label="${d.options.cols[i]}">${c}</td>`).join("")}</tr>`
-                )
-                .join("\n              ")}
-            </tbody>
-          </table>
-        </div>`;
+  // Options as grouped decision cards (not a table): the group is the first fork, each
+  // card is one option, and preparation time is a 4-segment meter.
+  const colIcons = p.slug === "seller" ? ["person", "groups"] : ["inventory_2", "person"];
+  const meter = (n) => `<span class="ometer-bar" aria-hidden="true">${[1, 2, 3, 4].map((i) => `<i${i <= n ? ' class="on"' : ""}></i>`).join("")}</span>`;
+  const optionCard = (r) => `<li class="ocard">
+                <div class="ocard-top"><span class="worry-i">${icon(r.icon, "mi-24")}</span><div><h3 class="ocard-t">${r.t}</h3><p class="ocard-s">${r.s}</p></div></div>
+                <p class="ocard-for"><span>${d.options.cols[0]}</span>${r.c[0]}</p>
+                <dl class="ocard-dl">
+                  <div>${icon(colIcons[0])}<dt>${d.options.cols[1]}</dt><dd>${r.c[1]}</dd></div>
+                  <div>${icon(colIcons[1])}<dt>${d.options.cols[2]}</dt><dd>${r.c[2]}</dd></div>
+                </dl>
+                <div class="ometer"><span class="ometer-l">${d.options.cols[3]}</span>${meter(r.meter)}<span class="ometer-v">${r.c[3]}</span></div>
+              </li>`;
+  const compare = `<p class="oaxis">${icon("alt_route")}<span>${d.options.axis}</span></p>
+        <div class="ogroups">
+          ${d.options.groups
+            .map(
+              (g) => `<div class="ogroup">
+            <div class="ogroup-h">${icon(g.icon)}<div><p class="ogroup-l">${g.label}</p><p class="ogroup-s">${g.sub}</p></div></div>
+            <ul class="ocards">
+              ${d.options.rows.filter((r) => r.g === g.key).map(optionCard).join("\n              ")}
+            </ul>${g.hint ? `
+            <div class="ohint">${icon("lightbulb")}<div><p class="ohint-t">${g.hint.t}</p><p class="ohint-d">${g.hint.d}</p></div></div>` : ""}
+          </div>`
+            )
+            .join("\n          ")}
+        </div>
+        <p class="ometer-scale"><span>準備期間の目安：短い</span>${meter(1)}<span>〜</span>${meter(4)}<span>長い</span></p>`;
 
   const steps = d.process.steps
     .map(

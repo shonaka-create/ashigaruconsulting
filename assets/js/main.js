@@ -49,7 +49,7 @@
     ".story-col > *", ".story-img", ".mission-txt", ".mission-grid li",
     ".mvv-img", ".mvv-txt", ".itable li", ".srow", ".pcta", ".fcta",
     ".hero-h1 span", ".hero-copy", ".phero-inner > *", ".doc > *", ".cintro > *",
-    ".sphero-inner > *", ".worry", ".tl-step", ".vpoint", ".prom", ".fee", ".cta-panel", ".ent", ".reason", ".cons", ".pcard", ".flow-step", ".opt",
+    ".sphero-inner > *", ".worry", ".ogroup", ".tl-step", ".vpoint", ".prom", ".fee", ".cta-panel", ".ent", ".reason", ".cons", ".pcard", ".flow-step", ".opt",
   ].join(",");
 
   var targets = [].slice.call(document.querySelectorAll(revealSelector));
