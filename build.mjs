@@ -688,7 +688,7 @@ function renderProServicePage(p) {
           ${d.options.groups
             .map(
               (g, i) => `<div class="osel-panel${i === 0 ? " is-active" : ""}" role="tabpanel" id="opt-${g.key}" aria-labelledby="tab-${g.key}" data-osel-panel="${g.key}">
-            <p class="osel-ph"><span class="osel-ph-k">${icon("check_circle")}表示中</span><span class="osel-ph-t">${g.head}</span><span class="osel-ph-c">${d.options.rows.filter((r) => r.g === g.key).length}つの形</span></p>
+            <p class="osel-ph"><span class="osel-ph-t">${g.head}</span><span class="osel-ph-c">${d.options.rows.filter((r) => r.g === g.key).length}つの形</span></p>
             <ul class="ocards2">
               ${d.options.rows.filter((r) => r.g === g.key).map(optionCard).join("\n              ")}${
                 g.hint

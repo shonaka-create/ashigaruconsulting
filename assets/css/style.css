@@ -1691,3 +1691,7 @@ ol.reasons, ol.flow, .crumbs ol { list-style: none; }
 
 /* the check inside the white 選択中 pill must stay navy (the active tab turns its other icons white) */
 .osel-tab.is-active .osel-on .mi { color: var(--navy); }
+
+/* The strip repeats the tab directly above it, so it is only shown when there are no
+   tabs (no JS: both groups are listed and each needs its own heading). */
+.osel.is-js .osel-ph { display: none; }
