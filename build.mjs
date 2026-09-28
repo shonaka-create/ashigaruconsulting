@@ -680,7 +680,7 @@ function renderProServicePage(p) {
             ${d.options.groups
               .map(
                 (g, i) => `<button class="osel-tab${i === 0 ? " is-active" : ""}" type="button" role="tab" id="tab-${g.key}" aria-controls="opt-${g.key}" aria-selected="${i === 0}" data-osel-tab="${g.key}">
-              ${icon(g.icon)}<span class="osel-txt"><span class="osel-l">${g.label}</span><span class="osel-s">${g.sub}</span></span><span class="osel-c">${d.options.rows.filter((r) => r.g === g.key).length}つの形</span>
+              ${icon(g.icon)}<span class="osel-txt"><span class="osel-l">${g.label}</span><span class="osel-s">${g.sub}</span></span><span class="osel-state osel-on">${icon("check_circle")}選択中</span><span class="osel-state osel-off">こちらを見る${icon("keyboard_arrow_right")}</span>
             </button>`
               )
               .join("\n            ")}
@@ -688,7 +688,7 @@ function renderProServicePage(p) {
           ${d.options.groups
             .map(
               (g, i) => `<div class="osel-panel${i === 0 ? " is-active" : ""}" role="tabpanel" id="opt-${g.key}" aria-labelledby="tab-${g.key}" data-osel-panel="${g.key}">
-            <p class="osel-ph">${icon(g.icon)}<span>${g.label}</span></p>
+            <p class="osel-ph"><span class="osel-ph-k">${icon("check_circle")}表示中</span><span class="osel-ph-t">${g.head}</span><span class="osel-ph-c">${d.options.rows.filter((r) => r.g === g.key).length}つの形</span></p>
             <ul class="ocards2">
               ${d.options.rows.filter((r) => r.g === g.key).map(optionCard).join("\n              ")}${
                 g.hint

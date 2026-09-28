@@ -69,8 +69,8 @@ export const pro = {
       axis: "最初の分かれ道は、ご自身が「引退するか、続けるか」です。",
       cols: ["こんな方に", "ご自身", "募集人・契約者", "準備期間の目安"],
       groups: [
-        { key: "retire", label: "引退を考えている", sub: "次の担い手に渡す", icon: "logout" },
-        { key: "stay", label: "続けたい", sub: "形を変えて、または今のまま", icon: "directions_walk" },
+        { key: "retire", label: "引退を考えている", sub: "次の担い手に渡す", icon: "logout", head: "引退を考えている方の選択肢" },
+        { key: "stay", label: "続けたい", sub: "形を変えて、または今のまま", icon: "directions_walk", head: "続けたい方の選択肢" },
       ],
       rows: [
         { g: "retire", icon: "handshake", meter: 3, diag: { kind: "handover", a: "あなたの代理店", b: "買い手" }, t: "第三者への譲渡", s: "事業を譲り、引退する", c: ["引退・廃業を考えている", "引き継ぎ期間ののち引退", "買い手が引き継ぐ。条件は交渉で決める", "数か月〜1年程度"] },
@@ -164,8 +164,8 @@ export const pro = {
       axis: "最初の分かれ道は、「代理店ごと迎えるか、個人を迎えるか」です。",
       cols: ["売り手の状況", "引き継ぐもの", "売り手の関わり", "準備期間の目安"],
       groups: [
-        { key: "agency", label: "代理店ごと迎える", sub: "契約と募集人をまとめて", icon: "storefront" },
-        { key: "person", label: "個人を迎える", sub: "募集人と担当契約を", icon: "person_add", hint: { t: "複数の形に対応できると、候補が広がります", d: "受け入れの形は、案件ごとに変えて構いません。条件をご登録いただく際に、対応できる形をすべてお知らせください。" } },
+        { key: "agency", label: "代理店ごと迎える", sub: "契約と募集人をまとめて", icon: "storefront", head: "代理店ごと迎える場合の形" },
+        { key: "person", label: "個人を迎える", sub: "募集人と担当契約を", icon: "person_add", head: "個人を迎える場合の形", hint: { t: "複数の形に対応できると、候補が広がります", d: "受け入れの形は、案件ごとに変えて構いません。条件をご登録いただく際に、対応できる形をすべてお知らせください。" } },
       ],
       rows: [
         { g: "agency", icon: "handshake", meter: 3, diag: { kind: "handover", a: "売り手の代理店", b: "自社" }, t: "事業の譲り受け", s: "代理店を引き受ける", c: ["引退・廃業を考えている", "契約と募集人", "引き継ぎ期間ののち引退", "数か月〜1年程度"] },

@@ -1634,3 +1634,60 @@ ol.reasons, ol.flow, .crumbs ol { list-style: none; }
 
 /* headings break at a natural point instead of orphaning the last characters */
 .cta2-h, .sphero-h1, .osel-l, .sw-t, .ocard-t { text-wrap: balance; }
+
+/* ------------------------------------------------ option selector, third pass
+   The chosen tab and the panel under it must read as ONE object, so there is never a
+   question of which side is on screen: the tabs sit on the panel like folder tabs, the
+   active one shares the panel's navy, and the panel names what it is showing. */
+.osel.is-js .osel-tabs { gap: 8px; align-items: flex-end; }
+.osel-tab {
+  min-height: 86px;
+  padding: 18px 24px;
+  border: 2px solid #cfd8e3;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  background: #eef0f3;
+  color: var(--ink-3);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.osel-tab .mi { color: inherit; }
+.osel-tab .osel-s { color: inherit; opacity: 0.85; }
+.osel-tab:not(.is-active):hover { background: #fff; border-color: var(--navy); color: var(--navy); }
+.osel-tab.is-active { min-height: 100px; padding: 24px; border-color: var(--navy); background: var(--navy); color: #fff; }
+.osel-tab.is-active::after { display: none; }
+.osel-tab.is-active .osel-l { font-size: 23px; }
+.osel-state { flex: none; display: flex; align-items: center; gap: 4px; padding: 5px 12px 5px 10px; border-radius: 16px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.osel-state .mi { font-size: 16px; }
+.osel-on { display: none; background: #fff; color: var(--navy); }
+.osel-off { padding: 5px 8px 5px 14px; border: 1px solid currentColor; }
+.osel-tab.is-active .osel-on { display: flex; }
+.osel-tab.is-active .osel-off { display: none; }
+.osel-c { display: none; }
+
+.osel-panel { margin-top: 24px; border: 3px solid var(--navy); border-radius: 10px; background: #eaf0f7; overflow: hidden; }
+.osel.is-js .osel-panel { margin-top: 0; border-radius: 0 0 10px 10px; }
+.osel.is-js .osel-panel.is-active { animation: osel-in 0.35s var(--ease); }
+@keyframes osel-in { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: none; } }
+@media (prefers-reduced-motion: reduce) { .osel.is-js .osel-panel.is-active { animation: none; } }
+
+.osel-ph, .osel.is-js .osel-ph { display: flex; align-items: center; gap: 14px; padding: 14px 24px; background: var(--navy); color: #fff; font-size: 16px; }
+.osel-ph-k { flex: none; display: flex; align-items: center; gap: 4px; padding: 3px 12px 3px 8px; border-radius: 14px; background: rgba(255, 255, 255, 0.16); font-size: 12px; font-weight: 700; }
+.osel-ph-k .mi { font-size: 16px; }
+.osel-ph-t { flex: 1; font-size: 18px; font-weight: 700; line-height: 1.4; }
+.osel-ph-c { flex: none; font-size: 13px; font-weight: 700; opacity: 0.85; }
+.ocards2, .osel.is-js .ocards2 { margin-top: 0; padding: 24px; }
+
+@media screen and (max-width: 768px) {
+  .osel.is-js .osel-tabs { gap: 6px; }
+  .osel-tab, .osel-tab.is-active { flex-direction: column; align-items: flex-start; gap: 6px; min-height: 0; padding: 14px 14px 16px; }
+  .osel-tab.is-active .osel-l, .osel-l { font-size: 16px; }
+  .osel-s { font-size: 12px; }
+  .osel-state { padding: 3px 10px 3px 8px; font-size: 11px; }
+  .osel-off { padding: 3px 6px 3px 10px; }
+  .osel-ph, .osel.is-js .osel-ph { flex-wrap: wrap; gap: 8px 10px; padding: 12px 16px; }
+  .osel-ph-t { flex: 1 1 100%; order: 3; font-size: 16px; }
+  .ocards2, .osel.is-js .ocards2 { padding: 16px; }
+}
+
+/* the check inside the white 選択中 pill must stay navy (the active tab turns its other icons white) */
+.osel-tab.is-active .osel-on .mi { color: var(--navy); }
