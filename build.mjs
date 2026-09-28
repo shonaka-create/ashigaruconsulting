@@ -9,7 +9,7 @@ import { mkdirSync, writeFileSync, cpSync } from "node:fs";
 import { site, navLinks, navActions, drawerLinks, footerLinks, footerCta } from "./src/data/site.js";
 import { home, about, service, contact, thanks, privacy } from "./src/data/pages.js";
 import { line, entrances, reasons, consultants, serviceHub, servicePages, column } from "./src/data/renewal.js";
-import { pro, trust } from "./src/data/service-pro.js";
+import { pro, trust, feeFlow, contactWays } from "./src/data/service-pro.js";
 
 const OUT = "dist";
 
@@ -616,16 +616,56 @@ ${
 
 // Long-form service page (seller / buyer). Section order follows how a prospect decides:
 // worry → options → process → valuation → promise → fee → FAQ → contact.
+
+// Small schematic for each option: who hands what to whom. Drawn, not described, so the
+// difference between e.g. 譲渡 and 合流 is visible before any text is read.
+function diagram(kind, a, b) {
+  const N = "#003571";
+  const T = "#e6edf6";
+  const box = (x, y, w, h, label, fill = "#fff", color = N) =>
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${fill}" stroke="${N}" stroke-width="1.5"/><text x="${x + w / 2}" y="${y + h / 2 + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="${color}">${label}</text>`;
+  const arrow = (x1, y1, x2, y2) => {
+    const ang = Math.atan2(y2 - y1, x2 - x1);
+    const pt = (dx, dy) =>
+      `${(x2 + dx * Math.cos(ang) - dy * Math.sin(ang)).toFixed(1)},${(y2 + dx * Math.sin(ang) + dy * Math.cos(ang)).toFixed(1)}`;
+    return `<line x1="${x1}" y1="${y1}" x2="${(x2 - 6 * Math.cos(ang)).toFixed(1)}" y2="${(y2 - 6 * Math.sin(ang)).toFixed(1)}" stroke="${N}" stroke-width="1.5"/><polygon points="${pt(0, 0)} ${pt(-8, -4.5)} ${pt(-8, 4.5)}" fill="${N}"/>`;
+  };
+  let g = "";
+  let label = `${a}から${b}へ`;
+  if (kind === "handover") g = box(8, 30, 118, 50, a) + arrow(134, 55, 166, 55) + box(174, 30, 118, 50, b, N, "#fff");
+  if (kind === "inside")
+    g =
+      `<rect x="4" y="6" width="292" height="98" rx="8" fill="${T}" stroke="${N}" stroke-width="1" stroke-dasharray="4 4"/><text x="16" y="25" font-size="11" font-weight="700" fill="${N}">社内</text>` +
+      box(20, 38, 104, 46, a) + arrow(132, 61, 168, 61) + box(176, 38, 104, 46, b, N, "#fff");
+  if (kind === "merge") {
+    g = box(8, 8, 118, 40, a) + box(8, 62, 118, 40, b, N, "#fff") + arrow(130, 28, 176, 46) + arrow(130, 82, 176, 64) + box(180, 30, 112, 50, "ひとつの体制に", T);
+    label = `${a}と${b}がひとつの体制になる`;
+  }
+  if (kind === "loop") {
+    g =
+      box(60, 30, 118, 50, a) +
+      `<path d="M 190 38 C 236 30, 236 80, 192 72" fill="none" stroke="${N}" stroke-width="1.5"/><polygon points="186,71 196,66.5 195,77" fill="${N}"/>` +
+      `<text x="262" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="${N}">体制を</text><text x="262" y="69" text-anchor="middle" font-size="12" font-weight="700" fill="${N}">整える</text>`;
+    label = `${a}のまま体制を整える`;
+  }
+  if (kind === "person")
+    g =
+      `<circle cx="67" cy="36" r="12" fill="#fff" stroke="${N}" stroke-width="1.5"/><path d="M 43 82 a 24 24 0 0 1 48 0 z" fill="#fff" stroke="${N}" stroke-width="1.5"/><text x="67" y="101" text-anchor="middle" font-size="12" font-weight="700" fill="${N}">${a}</text>` +
+      arrow(108, 55, 166, 55) + box(174, 30, 118, 50, b, N, "#fff");
+  return `<svg class="odiag" viewBox="0 0 300 110" role="img" aria-label="${label}">${g}</svg>`;
+}
+
 function renderProServicePage(p) {
   const d = pro[p.slug];
   const other = p.slug === "seller" ? entrances.items[1] : entrances.items[0];
   const lineBtn = `<a class="btn btn-line" href="${line.url}" target="_blank" rel="noopener" data-cta="line">${lineMark()}<p>${line.label}</p></a>`;
+  const num = (i) => String(i + 1).padStart(2, "0");
 
-  // Options as grouped decision cards (not a table): the group is the first fork, each
-  // card is one option, and preparation time is a 4-segment meter.
+  /* ---- OPTIONS: pick a side, then compare two cards ---- */
   const colIcons = p.slug === "seller" ? ["person", "groups"] : ["inventory_2", "person"];
   const meter = (n) => `<span class="ometer-bar" aria-hidden="true">${[1, 2, 3, 4].map((i) => `<i${i <= n ? ' class="on"' : ""}></i>`).join("")}</span>`;
-  const optionCard = (r) => `<li class="ocard">
+  const optionCard = (r) => `<li class="ocard2">
+                ${diagram(r.diag.kind, r.diag.a, r.diag.b)}
                 <div class="ocard-top"><span class="worry-i">${icon(r.icon, "mi-24")}</span><div><h3 class="ocard-t">${r.t}</h3><p class="ocard-s">${r.s}</p></div></div>
                 <p class="ocard-for"><span>${d.options.cols[0]}</span>${r.c[0]}</p>
                 <dl class="ocard-dl">
@@ -634,36 +674,63 @@ function renderProServicePage(p) {
                 </dl>
                 <div class="ometer"><span class="ometer-l">${d.options.cols[3]}</span>${meter(r.meter)}<span class="ometer-v">${r.c[3]}</span></div>
               </li>`;
-  const compare = `<p class="oaxis">${icon("alt_route")}<span>${d.options.axis}</span></p>
-        <div class="ogroups">
+  const options = `<p class="oaxis">${icon("alt_route")}<span>${d.options.axis}</span></p>
+        <div class="osel" data-osel>
+          <div class="osel-tabs" role="tablist" aria-label="${d.options.ja}">
+            ${d.options.groups
+              .map(
+                (g, i) => `<button class="osel-tab${i === 0 ? " is-active" : ""}" type="button" role="tab" id="tab-${g.key}" aria-controls="opt-${g.key}" aria-selected="${i === 0}" data-osel-tab="${g.key}">
+              ${icon(g.icon)}<span class="osel-txt"><span class="osel-l">${g.label}</span><span class="osel-s">${g.sub}</span></span><span class="osel-c">${d.options.rows.filter((r) => r.g === g.key).length}つの形</span>
+            </button>`
+              )
+              .join("\n            ")}
+          </div>
           ${d.options.groups
             .map(
-              (g) => `<div class="ogroup">
-            <div class="ogroup-h">${icon(g.icon)}<div><p class="ogroup-l">${g.label}</p><p class="ogroup-s">${g.sub}</p></div></div>
-            <ul class="ocards">
-              ${d.options.rows.filter((r) => r.g === g.key).map(optionCard).join("\n              ")}
-            </ul>${g.hint ? `
-            <div class="ohint">${icon("lightbulb")}<div><p class="ohint-t">${g.hint.t}</p><p class="ohint-d">${g.hint.d}</p></div></div>` : ""}
+              (g, i) => `<div class="osel-panel${i === 0 ? " is-active" : ""}" role="tabpanel" id="opt-${g.key}" aria-labelledby="tab-${g.key}" data-osel-panel="${g.key}">
+            <p class="osel-ph">${icon(g.icon)}<span>${g.label}</span></p>
+            <ul class="ocards2">
+              ${d.options.rows.filter((r) => r.g === g.key).map(optionCard).join("\n              ")}${
+                g.hint
+                  ? `
+              <li class="ocard2 ocard2-hint">${icon("lightbulb")}<p class="ohint-t">${g.hint.t}</p><p class="ohint-d">${g.hint.d}</p></li>`
+                  : ""
+              }
+            </ul>
           </div>`
             )
             .join("\n          ")}
         </div>
         <p class="ometer-scale"><span>準備期間の目安：短い</span>${meter(1)}<span>〜</span>${meter(4)}<span>長い</span></p>`;
 
-  const steps = d.process.steps
+  /* ---- PROCESS: two lanes (client / us) either side of a numbered spine ---- */
+  const lanes = d.process.steps
     .map(
-      (s, i) => `<li class="tl-step">
-            <div class="tl-rail"><span class="tl-n">${String(i + 1).padStart(2, "0")}</span></div>
-            <div class="tl-card">
-              <div class="tl-head"><h3 class="tl-t">${s.t}</h3><span class="tl-term">${s.term}</span>${s.free ? '<span class="tl-free">無料</span>' : ""}</div>
-              <dl class="tl-dl">
-                <div><dt>お客様</dt><dd>${s.you}</dd></div>
-                <div><dt>当社</dt><dd>${s.we}</dd></div>
-              </dl>
-            </div>
+      (s, i) => `<li class="sw-row${s.free ? " is-free" : ""}">
+            <div class="sw-cell sw-you"><span class="sw-tag">お客様</span><p>${s.you}</p></div>
+            <div class="sw-mid"><span class="sw-n">${num(i)}</span><h3 class="sw-t">${s.t}</h3><p class="sw-meta"><span class="tl-term">${s.term}</span>${s.free ? '<span class="tl-free">無料</span>' : ""}</p></div>
+            <div class="sw-cell sw-we"><span class="sw-tag">当社</span><p>${s.we}</p></div>
           </li>`
     )
     .join("\n          ");
+
+  /* ---- FEE: which step costs money, shown on the same six steps ---- */
+  const track = d.process.steps
+    .map(
+      (s, i) => `<li class="ftrack-i${s.free ? " is-free" : ""}"><span class="ftrack-n">${num(i)}</span><span class="ftrack-t">${s.t}</span><span class="ftrack-b">${s.free ? "無料" : "お見積り後"}</span></li>`
+    )
+    .join("");
+
+  const way = (key, href, body, attrs = "") => {
+    const w = contactWays[key];
+    return `<a class="way way-${key}" href="${href}"${attrs}>
+            <span class="way-tag">${w.tag}</span>
+            ${body}
+            <p class="way-t">${w.t}</p>
+            <p class="way-d">${w.d}</p>
+            <span class="way-go">${w.go}${icon("keyboard_arrow_right")}</span>
+          </a>`;
+  };
 
   const body = `    <div class="sphero">
       ${photo(p.hero.image, { cls: "sphero-bg" })}
@@ -697,7 +764,7 @@ function renderProServicePage(p) {
       <div class="sec-inner sec-inner-1080">
         ${heading(d.options.en, d.options.ja)}
         <p class="sec-lead sec-lead-l">${d.options.lead}</p>
-        ${compare}
+        ${options}
         <p class="ctable-foot">${d.options.foot}</p>
       </div>
     </section>
@@ -706,9 +773,13 @@ function renderProServicePage(p) {
       <div class="sec-inner sec-inner-1080">
         ${heading(d.process.en, d.process.ja)}
         <p class="sec-lead sec-lead-l">${d.process.lead}</p>
-        <ol class="tl">
-          ${steps}
-        </ol>
+        <p class="sw-total">${icon("schedule")}<span>${d.process.total}</span></p>
+        <div class="sw">
+          <div class="sw-head" aria-hidden="true"><p>${icon("person")}お客様がすること</p><p></p><p>${icon("support_agent")}当社がすること</p></div>
+          <ol class="sw-list">
+          ${lanes}
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -735,16 +806,26 @@ function renderProServicePage(p) {
     <section class="sec sec-white" id="fee">
       <div class="sec-inner sec-inner-1080">
         ${heading(d.fee.en, d.fee.ja)}
+        <p class="sec-lead sec-lead-l">どの段階から費用がかかるのかを、進め方の6つの段階に重ねて示します。</p>
+        <ol class="ftrack">${track}</ol>
         <div class="fees">
           <div class="fee fee-free">
+            <p class="fee-k">${icon("volunteer_activism")}<span>FREE</span></p>
             <h3 class="fee-t">${d.fee.free.t}</h3>
-            <ul class="fee-l">${d.fee.free.items.map((i) => `<li>${icon("check")}<span>${i}</span></li>`).join("")}</ul>
+            <ul class="fee-l">${d.fee.free.items.map((i) => `<li>${icon("check_circle")}<span>${i}</span></li>`).join("")}</ul>
           </div>
           <div class="fee">
+            <p class="fee-k">${icon("receipt_long")}<span>QUOTE FIRST</span></p>
             <h3 class="fee-t">${d.fee.paid.t}</h3>
             <ul class="fee-l">${d.fee.paid.items.map((i) => `<li>${icon("arrow_right")}<span>${i}</span></li>`).join("")}</ul>
             <p class="fee-n">${d.fee.paid.note}</p>
           </div>
+        </div>
+        <div class="fflow">
+          <p class="fflow-t">${feeFlow.t}</p>
+          <ol class="fflow-l">
+            ${feeFlow.steps.map((s) => `<li class="fflow-i"><span class="worry-i">${icon(s.icon, "mi-24")}</span><div><p class="fflow-h">${s.t}</p><p class="fflow-d">${s.d}</p></div></li>`).join("\n            ")}
+          </ol>
         </div>
       </div>
     </section>
@@ -758,21 +839,22 @@ function renderProServicePage(p) {
       </div>
     </section>
 
-    <section class="sec sec-white sec-cta">
+    <section class="sec sec-cta2" id="contact">
+      ${photo(p.hero.image, { cls: "cta2-bg" })}
       <div class="sec-inner sec-inner-1080">
-        <div class="cta-panel">
-          <div class="cta-txt">
-            <h2 class="cta-h">${d.cta.h}</h2>
-            <p class="cta-p">${d.cta.p}</p>
-            <a class="cta-guide" href="${trust.guideline.href}" target="_blank" rel="noopener">${icon("verified_user")}<span>${trust.guideline.label}</span></a>
-          </div>
-          <div class="cta-act">
-            ${lineBtn}
-            ${button("フォームから相談する", "/contact", "navy")}
-            <p class="cta-tel">お電話 <a href="tel:${site.tel}">${site.tel}</a><span>${trust.hours}</span></p>
-          </div>
+        <p class="cta2-k">CONTACT</p>
+        <h2 class="cta2-h">${d.cta.h}</h2>
+        <p class="cta2-p">${d.cta.p}</p>
+        <ul class="cta2-chips">${d.hero.chips.map((c) => `<li>${icon("check_circle")}<span>${c}</span></li>`).join("")}</ul>
+        <div class="ways">
+          ${way("line", line.url, `<span class="way-i way-i-line">${lineMark()}</span><img class="way-qr" src="/images/line-qr.png" alt="LINE公式アカウントの友だち追加用QRコード" width="112" height="112" loading="lazy">`, ' target="_blank" rel="noopener" data-cta="line"')}
+          ${way("form", "/contact", `<span class="way-i">${icon("mail", "mi-24")}</span>`)}
+          ${way("tel", `tel:${site.tel}`, `<span class="way-i">${icon("call", "mi-24")}</span><p class="way-num">${site.tel}</p>`)}
         </div>
-        <a class="other" href="${other.href}"><span class="other-k">${other.kicker}</span><span class="other-t">${other.cta}</span>${icon("keyboard_arrow_right")}</a>
+        <div class="cta2-foot">
+          <a class="cta-guide" href="${trust.guideline.href}" target="_blank" rel="noopener">${icon("verified_user")}<span>${trust.guideline.label}</span></a>
+          <a class="cta2-other" href="${other.href}"><span>${other.kicker}</span>${other.cta}${icon("keyboard_arrow_right")}</a>
+        </div>
       </div>
     </section>`;
   return page({ title: p.title, path: p.path, body, bodyClass: "p-sp p-sp-pro" });

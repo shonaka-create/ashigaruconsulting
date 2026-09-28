@@ -49,7 +49,7 @@
     ".story-col > *", ".story-img", ".mission-txt", ".mission-grid li",
     ".mvv-img", ".mvv-txt", ".itable li", ".srow", ".pcta", ".fcta",
     ".hero-h1 span", ".hero-copy", ".phero-inner > *", ".doc > *", ".cintro > *",
-    ".sphero-inner > *", ".worry", ".ogroup", ".tl-step", ".vpoint", ".prom", ".fee", ".cta-panel", ".ent", ".reason", ".cons", ".pcard", ".flow-step", ".opt",
+    ".sphero-inner > *", ".worry", ".osel", ".sw-row", ".ftrack", ".fflow", ".way", ".tl-step", ".vpoint", ".prom", ".fee", ".cta-panel", ".ent", ".reason", ".cons", ".pcard", ".flow-step", ".opt",
   ].join(",");
 
   var targets = [].slice.call(document.querySelectorAll(revealSelector));
@@ -83,6 +83,38 @@
       });
     });
   }
+
+  /* -------------------------------------------------------- option selector */
+
+  // Without JS both groups are simply listed one after the other. With JS the visitor
+  // picks a side first and sees only the options that apply to them.
+  [].slice.call(document.querySelectorAll("[data-osel]")).forEach(function (root) {
+    var tabs = [].slice.call(root.querySelectorAll("[data-osel-tab]"));
+    var panels = [].slice.call(root.querySelectorAll("[data-osel-panel]"));
+    if (!tabs.length) return;
+    root.classList.add("is-js");
+    function select(key, focus) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute("data-osel-tab") === key;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle("is-active", p.getAttribute("data-osel-panel") === key);
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(t.getAttribute("data-osel-tab")); });
+      t.addEventListener("keydown", function (e) {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+        select(next.getAttribute("data-osel-tab"), true);
+      });
+    });
+    select(tabs[0].getAttribute("data-osel-tab"));
+  });
 
   /* ----------------------------------------------------------- anchor strip */
 
